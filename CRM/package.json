@@ -5,8 +5,7 @@
    "type": "module",
    "lint-staged": {
       "**/*.{js,jsx,ts,tsx}": [
-         "npx eslint --fix",
-         "npm echo"
+         "npx prettier --write"
       ]
    },
    "scripts": {
