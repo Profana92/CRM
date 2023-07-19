@@ -3,7 +3,18 @@ module.exports = {
       browser: true,
       es2021: true,
    },
-   extends: ['standard-with-typescript', 'plugin:react/recommended', 'prettier'],
+   settings: {
+      react: {
+         version: 'detect',
+      },
+   },
+   extends: [
+      'standard-with-typescript',
+      'plugin:react/recommended',
+      'eslint:recommended',
+      'plugin:@typescript-eslint/recommended',
+      'prettier',
+   ],
    overrides: [
       {
          env: {
