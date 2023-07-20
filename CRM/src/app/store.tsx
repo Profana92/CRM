@@ -1,9 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
 import counterReducer from 'features/counterSlice';
+import currentPageTitleReducer from 'features/currentPageTitleSlice';
 
 export const store = configureStore({
    reducer: {
       counter: counterReducer,
+      pageTitle: currentPageTitleReducer,
    },
 });
 
