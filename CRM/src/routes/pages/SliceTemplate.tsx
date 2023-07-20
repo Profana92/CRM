@@ -13,20 +13,22 @@ function Home() {
    }, []);
 
    return (
-      <div className="shadow-lg  min-h-[calc(100vh-96px)]">
-         <Counter />
-         <div>
+      <>
+         <div className="">
+            <Counter />
             <div>
-               <button aria-label="Increment value" onClick={() => dispatch(setPageTitle('Dziala'))}>
-                  Increment
-               </button>
-               <span>{count}</span>
-               <button aria-label="Decrement value" onClick={() => dispatch(setPageTitle('Tez dziala'))}>
-                  Decrement
-               </button>
+               <div>
+                  <button aria-label="Increment value" onClick={() => dispatch(setPageTitle('Dziala'))}>
+                     Increment
+                  </button>
+                  <span>{count}</span>
+                  <button aria-label="Decrement value" onClick={() => dispatch(setPageTitle('Tez dziala'))}>
+                     Decrement
+                  </button>
+               </div>
             </div>
          </div>
-      </div>
+      </>
    );
 }
 

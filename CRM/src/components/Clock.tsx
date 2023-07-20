@@ -9,9 +9,9 @@ function Clock() {
    }, []);
 
    return (
-      <p className="hidden lg:block text-2xl font-medium">{`${currentTime.getHours()} : ${currentTime.getMinutes()}  : ${
-         currentTime.getSeconds() < 10 ? '0' : ''
-      }${currentTime.getSeconds()}`}</p>
+      <p className="hidden lg:block text-2xl font-medium">{`${currentTime.getHours() < 10 ? '0' : ''}${currentTime.getHours()} : ${
+         currentTime.getMinutes() < 10 ? '0' : ''
+      }${currentTime.getMinutes()} : ${currentTime.getSeconds() < 10 ? '0' : ''}${currentTime.getSeconds()}`}</p>
    );
 }
 
