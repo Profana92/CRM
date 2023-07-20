@@ -18,6 +18,11 @@ h5,
 h6 {
    font-family: 'Montserrat', sans-serif;
 }
+/* #root {
+   min-height: 100vh;
+   display: flex;
+   flex-direction: column;
+} */
 /* 
 @media (prefers-color-scheme: light) {
    :root {

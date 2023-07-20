@@ -7,7 +7,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Root from 'routes/Root.tsx';
 import ErrorPage from 'routes/pages/ErrorPage.tsx';
 import Home from 'routes/pages/Home.tsx';
-
+import Products from 'routes/pages/Products.js';
 const router = createBrowserRouter([
    {
       path: '/',
@@ -19,8 +19,28 @@ const router = createBrowserRouter([
             element: <Home />,
          },
          {
-            path: 'children',
-            element: <h1>Children</h1>,
+            path: 'products',
+            element: <Products />,
+         },
+         {
+            path: 'person',
+            element: <Products />,
+         },
+         {
+            path: 'institution',
+            element: <Products />,
+         },
+         {
+            path: 'offers',
+            element: <Products />,
+         },
+         {
+            path: 'orders',
+            element: <Products />,
+         },
+         {
+            path: 'knowledge_base',
+            element: <Products />,
          },
       ],
    },
