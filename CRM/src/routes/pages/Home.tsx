@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
 import { Counter } from 'features/counter/Counter';
-import { Title } from 'features/currentPageTitle';
 import { useSelector, useDispatch } from 'react-redux';
 import { setPageTitle } from 'features/currentPageTitleSlice';
 import type { RootState } from 'app/store';
