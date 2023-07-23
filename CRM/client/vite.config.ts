@@ -3,5 +3,10 @@ import react from '@vitejs/plugin-react';
 import tsconfigPaths from 'vite-tsconfig-paths'; // --> import it
 
 export default defineConfig({
-   plugins: [react(), tsconfigPaths()], // --> add here
+   plugins: [react(), tsconfigPaths()],
+   server: {
+      proxy: {
+         '/api': 'http://localhost:3000',
+      },
+   },
 });
