@@ -8,6 +8,7 @@ import Root from 'routes/Root.tsx';
 import ErrorPage from 'routes/pages/ErrorPage.tsx';
 import Home from 'routes/pages/Home.tsx';
 import Products from 'routes/pages/Products.js';
+
 const router = createBrowserRouter([
    {
       path: '/',
@@ -23,7 +24,7 @@ const router = createBrowserRouter([
             element: <Products />,
          },
          {
-            path: 'person',
+            path: 'persons',
             element: <Products />,
          },
          {

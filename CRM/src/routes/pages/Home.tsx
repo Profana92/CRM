@@ -13,7 +13,7 @@ function Home() {
    }, []);
 
    return (
-      <div className="shadow-lg  min-h-[calc(100vh-96px)]">
+      <div className="min-h-[calc(100vh-96px)] w-full p-5">
          <Counter />
          <div>
             <div>

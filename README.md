@@ -14,13 +14,13 @@ Technologies:
 
 Project should have:
 
-- Clock
+- Clock -
 - Dynamic Title
-- Products
-- Companies
-- Individual clients
-- Option to make, generate and print sales offers
-- Option to make, generate and print sales orders
+- Products - Fake Store API
+- Companies - Express.js
+- Individual clients - Express.js
+- Option to make, generate and print sales offers - Redux
+- Option to make, generate and print sales orders - Redux
 
 Resources:
 

@@ -20,7 +20,7 @@ function Header(props: OpenState) {
             >
                <GiHamburgerMenu size="1.25rem" />
             </div>
-            <p className="hidden lg:block mx-3">SimCRM</p>
+            <p className="hidden lg:block mx-3 font-normal">SimCRM</p>
             <p>{activeTitle}</p>
          </div>
          <Clock />
