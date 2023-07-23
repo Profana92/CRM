@@ -1,7 +1,7 @@
 function Footer() {
    return (
-      <footer className="flex h-12 items-center flex-row text-slate-800 font-bold w-full justify-between px-5 absolute -z-10 bg-white">
-         <p>fdgg</p>
+      <footer className="flex h-12 items-center justify-center flex-row text-slate-800 font-bold w-full px-5 absolute -z-10 bg-white border-t-2">
+         <p className="font-normal">Copyright &copy; 2023 - Wojciech Marczak</p>
       </footer>
    );
 }

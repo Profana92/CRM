@@ -15,7 +15,13 @@ function NavListElement(props: propsType) {
          onClick={() => {
             props.setOpen(false);
          }}
-         className={({ isActive, isPending }) => (isPending ? 'pending' : isActive ? 'bg-slate-100 text-center font-semibold h-12' : 'text-center ')}
+         className={({ isActive, isPending }) =>
+            isPending
+               ? 'pending'
+               : isActive
+               ? 'bg-slate-100 font-semibold w-full h-12 leading-[3rem] transition-all duration-[400ms]'
+               : 'transition-all	bg-white'
+         }
       >
          {props.item.name}
       </NavLink>

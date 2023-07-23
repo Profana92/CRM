@@ -7,7 +7,7 @@ interface OpenState {
 const navLinks: Array<{ name: string; location: string; id: number }> = [
    { name: 'Home', location: '/', id: 1 },
    { name: 'Products', location: '/products', id: 2 },
-   { name: 'Person', location: '/person', id: 3 },
+   { name: 'Persons', location: '/persons', id: 3 },
    { name: 'Institution', location: '/institution', id: 4 },
    { name: 'Offers', location: '/offers', id: 5 },
    { name: 'Orders', location: '/orders', id: 6 },
@@ -15,7 +15,11 @@ const navLinks: Array<{ name: string; location: string; id: number }> = [
 ];
 
 function Sidebar(props: OpenState) {
-   const navList = navLinks.map((item) => <NavListElement key={item.id} item={item} setOpen={props.setOpen} />);
+   const navList = navLinks.map((item) => (
+      <div key={item.id} className="flex justify-center items-center text-center h-12">
+         <NavListElement item={item} setOpen={props.setOpen} />
+      </div>
+   ));
 
    return (
       <div
