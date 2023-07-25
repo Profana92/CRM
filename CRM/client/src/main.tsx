@@ -3,16 +3,26 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import { store } from './app/store.js';
 import { Provider } from 'react-redux';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { createBrowserRouter, redirect, RouterProvider, useLocation } from 'react-router-dom';
 import Root from 'routes/Root.tsx';
 import ErrorPage from 'routes/pages/ErrorPage.tsx';
 import Home from 'routes/pages/Home.tsx';
 import Products from 'routes/pages/Products.js';
-
+import Clients from 'routes/pages/Clients.js';
+import LoginForm from 'routes/pages/login/login.js';
+import PrivateRoute from 'routes/pages/login/privateRoute.js';
 const router = createBrowserRouter([
    {
+      path: '/login',
+      element: <LoginForm />,
+   },
+   {
       path: '/',
-      element: <Root />,
+      element: (
+         <PrivateRoute>
+            <Root />
+         </PrivateRoute>
+      ),
       errorElement: <ErrorPage />,
       children: [
          {
@@ -24,8 +34,12 @@ const router = createBrowserRouter([
             element: <Products />,
          },
          {
-            path: 'persons',
-            element: <Products />,
+            path: 'login',
+            element: <LoginForm />,
+         },
+         {
+            path: 'Clients',
+            element: <Clients />,
          },
          {
             path: 'institution',

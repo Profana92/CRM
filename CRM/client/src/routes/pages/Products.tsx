@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { setPageTitle } from 'features/currentPageTitleSlice';
 import axios from 'axios';
-import TableProducts from 'components/TableProducts';
+import TableProducts from 'components/Tables/TableProducts';
 import { RotatingLines } from 'react-loader-spinner';
 function Products() {
    const [fetchedData, setfetchedData] = useState(null);
