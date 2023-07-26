@@ -83,7 +83,6 @@ function login() {
          const response = await axios.get(`/userdata?username=${inputNameRef.current.value}&password=${inputPasswordRef.current.value}`);
          localStorage.setItem('user', JSON.stringify(response.data));
          if (response.data.logged_in === true) {
-            console.log('CO JEST KURWA');
             routeChange();
          } else {
             setUsernameValidation(initialUsernameState);

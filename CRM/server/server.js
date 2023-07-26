@@ -3,12 +3,25 @@ const app = express();
 const port = 3000;
 const fs = require("fs");
 const basicAuth = require("express-basic-auth");
-const data = Object.values(JSON.parse(fs.readFileSync("./server/customersData.json")));
+const customersData = Object.values(JSON.parse(fs.readFileSync("./server/customersData.json")));
+const tasksData = Object.values(JSON.parse(fs.readFileSync("./server/tasks.json")));
 
-const users = [{ username: "Admin19/", password: "Admin19/", firstname: "John", lastName: "Doe", position: "Sales Team Manager" }];
+const users = [
+  {
+    username: "Admin_19",
+    password: "Admin19/",
+    firstname: "John",
+    lastName: "Doe",
+    position: "Sales Team Manager",
+    picture: "https://randomuser.me/api/portraits/men/4.jpg",
+  },
+];
 
 app.get("/api", (req, res) => {
-  res.send(data);
+  res.send(customersData);
+});
+app.get("/tasks", (req, res) => {
+  res.send(tasksData);
 });
 app.get("/userdata", (req, res) => {
   let result;
@@ -20,10 +33,9 @@ app.get("/userdata", (req, res) => {
     result.logged_in = false;
   }
 
-  console.log(req.query);
   console.log("wynik:", result);
   res.send({
-    userData: { username: result.username, firstname: result.firstname, lastName: result.lastName, position: result.position },
+    userData: { username: result.username, firstname: result.firstname, lastName: result.lastName, position: result.position, picture: result.picture },
     logged_in: result.logged_in,
   });
 });

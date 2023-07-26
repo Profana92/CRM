@@ -11,7 +11,9 @@ export default function Root() {
       <>
          <Header open={open} setOpen={setOpen} />
          <Sidebar open={open} setOpen={setOpen} />
-         <Outlet />
+         <div className="m-5">
+            <Outlet />
+         </div>
          <Footer />
       </>
    );

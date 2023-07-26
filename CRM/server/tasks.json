@@ -1,0 +1,220 @@
+[
+  {
+    "customer": {
+      "title": "Mr",
+      "first": "Harald",
+      "last": "Piller",
+      "location": {
+        "street": "Heideweg 7673",
+        "city": "Brandenburg an der Havel",
+        "country": "Germany",
+        "postcode": 79820
+      },
+      "email": "harald.selle@example.com",
+      "phone": "(0737) 087442",
+      "cell": "(06) 69955774"
+    },
+    "taskId": 1,
+    "taskDetails": {
+      "title": "Send offer on a laptop",
+      "dateOfCreation": "2022-05-09T22:28:08.608Z",
+      "priority": "High",
+      "createdBy": {
+        "title": "Mr",
+        "name": "Stanislav Riemens",
+        "position": "CEO"
+      }
+    }
+  },
+  {
+    "customer": {
+      "title": "Mrs",
+      "first": "Aleksandra",
+      "last": "Šijan",
+      "location": {
+        "street": "Dulongstraat 9384",
+        "city": "Brandenburg an der Havel",
+        "country": "Germany",
+        "postcode": 79820
+      },
+      "city": "Bretten",
+      "country": "Germany",
+      "postcode": 28931,
+      "email": "harald.selle@example.com"
+    },
+    "taskId": 2,
+    "taskDetails": {
+      "title": "Send offer on a ChromeBook",
+      "dateOfCreation": "2009-05-22T12:32:34.157Z",
+      "priority": "Medium",
+      "createdBy": {
+        "title": "Mr",
+        "name": "Stanislav Riemens",
+        "position": "CEO"
+      }
+    }
+  },
+  {
+    "customer": {
+      "title": "Ms",
+      "first": "Adhira",
+      "last": "Patil",
+      "location": {
+        "street": "Raviwar Peth 2421",
+        "city": "Brandenburg an der Havel",
+        "country": "Germany",
+        "postcode": 79820
+      },
+      "email": "harald.selle@example.com",
+      "phone": "(0737) 087442",
+      "cell": "(06) 69955774"
+    },
+    "taskId": 3,
+    "taskDetails": {
+      "title": "Send offer on a laptop",
+      "dateOfCreation": "2022-05-09T22:28:08.608Z",
+      "priority": "Low",
+      "createdBy": {
+        "title": "Mr",
+        "name": "Stanislav Riemens",
+        "position": "CEO"
+      }
+    }
+  },
+  {
+    "customer": {
+      "title": "Mrs",
+      "first": "Sofia",
+      "last": "Burns",
+      "location": {
+        "street": "Parkstraße 5539",
+        "city": "Brandenburg an der Havel",
+        "country": "Germany",
+        "postcode": 79820
+      },
+      "email": "harald.selle@example.com",
+      "phone": "(0737) 087442",
+      "cell": "(06) 69955774"
+    },
+    "taskId": 4,
+    "taskDetails": {
+      "title": "Send offer on a laptop",
+      "dateOfCreation": "2022-05-09T22:28:08.608Z",
+      "priority": "Medium",
+      "createdBy": {
+        "title": "Mr",
+        "name": "Stanislav Riemens",
+        "position": "CEO"
+      }
+    }
+  },
+  {
+    "customer": {
+      "title": "Mr",
+      "first": "Harald",
+      "last": "Piller",
+      "location": {
+        "street": "Heideweg 7673",
+        "city": "Brandenburg an der Havel",
+        "country": "Germany",
+        "postcode": 79820
+      },
+      "email": "harald.selle@example.com",
+      "phone": "(0737) 087442",
+      "cell": "(06) 69955774"
+    },
+    "taskId": 1,
+    "taskDetails": {
+      "title": "Send offer on a laptop",
+      "dateOfCreation": "2022-05-09T22:28:08.608Z",
+      "priority": "High",
+      "createdBy": {
+        "title": "Mr",
+        "name": "Stanislav Riemens",
+        "position": "CEO"
+      }
+    }
+  },
+  {
+    "customer": {
+      "title": "Mrs",
+      "first": "Aleksandra",
+      "last": "Šijan",
+      "location": {
+        "street": "Dulongstraat 9384",
+        "city": "Brandenburg an der Havel",
+        "country": "Germany",
+        "postcode": 79820
+      },
+      "city": "Bretten",
+      "country": "Germany",
+      "postcode": 28931,
+      "email": "harald.selle@example.com"
+    },
+    "taskId": 2,
+    "taskDetails": {
+      "title": "Send offer on a ChromeBook",
+      "dateOfCreation": "2009-05-22T12:32:34.157Z",
+      "priority": "Medium",
+      "createdBy": {
+        "title": "Mr",
+        "name": "Stanislav Riemens",
+        "position": "CEO"
+      }
+    }
+  },
+  {
+    "customer": {
+      "title": "Ms",
+      "first": "Adhira",
+      "last": "Patil",
+      "location": {
+        "street": "Raviwar Peth 2421",
+        "city": "Brandenburg an der Havel",
+        "country": "Germany",
+        "postcode": 79820
+      },
+      "email": "harald.selle@example.com",
+      "phone": "(0737) 087442",
+      "cell": "(06) 69955774"
+    },
+    "taskId": 3,
+    "taskDetails": {
+      "title": "Send offer on a laptop",
+      "dateOfCreation": "2022-05-09T22:28:08.608Z",
+      "priority": "Low",
+      "createdBy": {
+        "title": "Mr",
+        "name": "Stanislav Riemens",
+        "position": "CEO"
+      }
+    }
+  },
+  {
+    "customer": {
+      "title": "Mrs",
+      "first": "Sofia",
+      "last": "Burns",
+      "location": {
+        "street": "Parkstraße 5539",
+        "city": "Brandenburg an der Havel",
+        "country": "Germany",
+        "postcode": 79820
+      },
+      "email": "harald.selle@example.com",
+      "phone": "(0737) 087442",
+      "cell": "(06) 69955774"
+    },
+    "taskId": 4,
+    "taskDetails": {
+      "title": "Send offer on a laptop",
+      "dateOfCreation": "2022-05-09T22:28:08.608Z",
+      "priority": "Medium",
+      "createdBy": {
+        "title": "Mr",
+        "name": "Stanislav Riemens",
+        "position": "CEO"
+      }
+    }
+  }
+]

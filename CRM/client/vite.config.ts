@@ -8,6 +8,7 @@ export default defineConfig({
       proxy: {
          '/api': 'http://localhost:3000',
          '/userdata': 'http://localhost:3000',
+         '/tasks': 'http://localhost:3000',
       },
    },
 });
