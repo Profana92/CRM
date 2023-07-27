@@ -6,9 +6,10 @@ export default defineConfig({
    plugins: [react(), tsconfigPaths()],
    server: {
       proxy: {
-         '/api': 'http://localhost:3000',
-         '/userdata': 'http://localhost:3000',
-         '/tasks': 'http://localhost:3000',
+         '/api/userdata': 'http://localhost:3000',
+         '/api/tasks': 'http://localhost:3000',
+         '/api/clients': 'http://localhost:3000',
+         '/api/markets': 'http://localhost:3000',
       },
    },
 });

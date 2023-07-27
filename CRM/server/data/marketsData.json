@@ -1,0 +1,175 @@
+[
+  {
+    "marketName": "market_1",
+    "clients": [
+      {
+        "name": "Bertram Madsen",
+        "location": {
+          "street": "Ablevej 5046",
+          "city": "Oure",
+          "country": "Denmark",
+          "postcode": 17868
+        },
+        "email": "bertram.madsen@example.com",
+        "login": {
+          "uuid": "2778f901-889c-414e-b5d8-75acfe9ef7e8",
+          "username": "ticklishlion538",
+          "password": "fortress"
+        },
+        "phone": "99599495",
+        "cell": "65761102",
+        "picture": {
+          "large": "https://randomuser.me/api/portraits/men/77.jpg",
+          "medium": "https://randomuser.me/api/portraits/med/men/77.jpg",
+          "thumbnail": "https://randomuser.me/api/portraits/thumb/men/77.jpg"
+        },
+        "offers": [
+          {
+            "uniqueiD": "O/01/12/2022",
+            "dateOfCreation": "2023, 1 , 15, 10, 32",
+            "products": [
+              { "name": "White Gold Plated Princess", "amount": 3 },
+              { "name": "John Hardy Women's Legends Naga Gold & Silver Dragon Station Chain Bracelet", "amount": 1 }
+            ],
+            "status": "Waiting for reply",
+            "associatedOrder": ""
+          },
+          {
+            "uniqueiD": "O/05/12/2022",
+            "dateOfCreation": "2023, 1 , 15, 10, 32",
+            "products": [{ "name": "John Hardy Women's Legends Naga Gold & Silver Dragon Station Chain Bracelet", "amount": 2 }],
+            "status": "Waiting for reply",
+            "associatedOrder": ""
+          }
+        ]
+      },
+      {
+        "name": "Annegrete Schultes",
+        "location": {
+          "street": "Lindenstraße 7001",
+          "city": "Alsleben (Saale)",
+          "country": "Germany",
+          "postcode": 81395
+        },
+        "email": "annegrete.schultes@example.com",
+        "login": {
+          "uuid": "8773d967-f45a-46fd-9342-446b0c86da45",
+          "username": "whitepanda214",
+          "password": "sponge"
+        },
+        "phone": "0657-2977313",
+        "cell": "0170-4373324",
+        "picture": {
+          "large": "https://randomuser.me/api/portraits/women/9.jpg",
+          "medium": "https://randomuser.me/api/portraits/med/women/9.jpg",
+          "thumbnail": "https://randomuser.me/api/portraits/thumb/women/9.jpg"
+        },
+        "offers": [
+          {
+            "uniqueiD": "O/02/12/2022",
+            "dateOfCreation": "2023, 1 , 17, 10, 01",
+            "products": [
+              { "name": "WD 2TB Elements Portable External", "amount": 1 },
+              { "name": "John Hardy Women's Legends Naga Gold & Silver Dragon Station Chain Bracelet", "amount": 1 },
+              { "name": "Mens Casual Premium Slim Fit T-Shirts", "amount": 1 }
+            ],
+            "status": "Waiting for reply",
+            "associatedOrder": ""
+          }
+        ]
+      },
+      {
+        "name": "Faraj Shetty",
+        "location": {
+          "street": "Gandhi Maidan Marg 5644",
+          "city": "Mau",
+          "country": "India",
+          "postcode": 15936
+        },
+        "email": "faraj.shetty@example.com",
+        "login": {
+          "uuid": "ea80a5ad-0fd9-4f90-b3fb-efd67b642360",
+          "username": "bluemouse648",
+          "password": "batman1"
+        },
+        "phone": "7557933903",
+        "cell": "9936532513",
+        "picture": {
+          "large": "https://randomuser.me/api/portraits/men/87.jpg",
+          "medium": "https://randomuser.me/api/portraits/med/men/87.jpg",
+          "thumbnail": "https://randomuser.me/api/portraits/thumb/men/87.jpg"
+        },
+        "offers": [
+          {
+            "uniqueiD": "O/03/12/2022",
+            "dateOfCreation": "2023, 1 , 15, 14, 23",
+            "products": [
+              { "name": "Fjallraven - Foldsack No. 1 Backpack", "amount": 1 },
+              { "name": "Pierced Owl Rose Gold Plated Stainless Steel", "amount": 2 }
+            ],
+            "status": "Completed",
+            "associatedOrder": "Z/01/12/2022/"
+          }
+        ],
+        "orders": [
+          {
+            "uniqueiD": "Z/01/12/2022",
+            "dateOfCreation": "2023, 1 , 16, 14, 23",
+            "products": [
+              { "name": "Fjallraven - Foldsack No. 1 Backpack", "amount": 1 },
+              { "name": "Pierced Owl Rose Gold Plated Stainless Steel", "amount": 2 }
+            ],
+            "status": "Sent",
+            "associatedOffer": "O/03/12/2022"
+          }
+        ]
+      },
+      {
+        "name": "Pippa De Goeij",
+        "location": {
+          "street": "Dorenbos 6011",
+          "city": "Illikhoven",
+          "country": "Netherlands",
+          "postcode": "3414 US"
+        },
+        "email": "pippa.degoeij@example.com",
+        "login": {
+          "uuid": "6e873b1f-2794-4929-b23d-5592f4773e58",
+          "username": "bluegorilla402",
+          "password": "cambridg"
+        },
+        "phone": "(0795) 561269",
+        "cell": "(06) 91247335",
+        "picture": {
+          "large": "https://randomuser.me/api/portraits/women/4.jpg",
+          "medium": "https://randomuser.me/api/portraits/med/women/4.jpg",
+          "thumbnail": "https://randomuser.me/api/portraits/thumb/women/4.jpg"
+        },
+        "offers": [
+          {
+            "uniqueiD": "O/04/12/2022",
+            "dateOfCreation": "2023, 1 , 25, 14, 23",
+            "products": [
+              { "name": "Samsung 49-Inch CHG90 144Hz Curved ", "amount": 2 },
+              { "name": "Rain Jacket Women Windbreaker ", "amount": 1 }
+            ],
+            "status": "Completed",
+            "associatedOrder": "Z/02/12/2022"
+          }
+        ],
+        "orders": [
+          {
+            "uniqueiD": "Z/02/12/2022/",
+            "dateOfCreation": "2023, 1 , 16, 14, 23",
+            "products": [
+              { "name": "Fjallraven - Foldsack No. 1 Backpack", "amount": 1 },
+              { "name": "Pierced Owl Rose Gold Plated Stainless Steel", "amount": 2 }
+            ],
+            "status": "Sent",
+            "associatedOffer": "O/04/12/2022"
+          }
+        ]
+      }
+    ]
+  }
+]

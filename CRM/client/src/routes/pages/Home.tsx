@@ -3,18 +3,33 @@ import { useEffect, useState } from 'react';
 import { setPageTitle } from 'features/currentPageTitleSlice';
 import { RotatingLines } from 'react-loader-spinner';
 import { useDispatch } from 'react-redux';
-import TasksTable from 'components/Pages/Home/TasksTable';
+import TasksTable from 'components/Tables/TasksTable';
+import OffersTable from 'components/Tables/OffersTable';
 import LoggedInPerson from 'components/Pages/Home/LoggedInPerson';
 import Calendar from 'components/Pages/Home/Calendar';
-
+import OrdersTable from 'components/Tables/OrdersTable';
+import { Link } from 'react-router-dom';
 function Home() {
    const dispatch = useDispatch();
    const [fetchedData, setfetchedData] = useState(null);
+   const [fetchedMarketsData, setFetchedMarketsData] = useState(null);
    const [loggedInUser, setloggedInUser] = useState(JSON.parse(localStorage.getItem('user')));
+
    async function getProducts(limit?: number) {
       try {
-         const response = await axios.get(`/tasks`);
+         const response = await axios.get(`/api/tasks`);
          setfetchedData(response);
+      } catch (error) {
+         console.error(error);
+      }
+   }
+   async function getOffers(limit?: number) {
+      try {
+         const response = await axios.get(`/api/markets`);
+         const filteredResponse = response.data.find((item) => {
+            return item.marketName === 'market_1';
+         });
+         setFetchedMarketsData(filteredResponse);
       } catch (error) {
          console.error(error);
       }
@@ -24,6 +39,7 @@ function Home() {
       document.title = 'Home';
       dispatch(setPageTitle('Home'));
       getProducts();
+      getOffers();
    }, []);
 
    let calendarData = false;
@@ -55,7 +71,7 @@ function Home() {
                   )}
                </div>
             </div>
-            <div className=" max-w-[1920px] xl:flex m-auto shadow-lg border">
+            <div className=" max-w-[1920px] xl:flex m-auto shadow-lg border mb-5">
                {calendarData ? (
                   <Calendar items={calendarData} />
                ) : (
@@ -65,6 +81,38 @@ function Home() {
                      </div>
                   </div>
                )}
+            </div>
+            <div className=" max-w-[1920px] xl:flex m-auto shadow-lg border mb-5">
+               {fetchedMarketsData ? (
+                  <OffersTable items={fetchedMarketsData.clients} />
+               ) : (
+                  <div className="w-full">
+                     <div className="flex items-center justify-center p-12">
+                        <RotatingLines strokeColor="grey" strokeWidth="5" animationDuration="0.75" width="96" visible={true} />
+                     </div>
+                  </div>
+               )}
+            </div>
+            <div className="flex justify-end mb-5">
+               <Link to="/orders">
+                  <button className="py-3 px-6 border shadow-lg">See more orders</button>
+               </Link>
+            </div>
+            <div className=" max-w-[1920px] m-auto shadow-lg border mb-5">
+               {fetchedMarketsData ? (
+                  <OrdersTable items={fetchedMarketsData.clients} />
+               ) : (
+                  <div className="w-full">
+                     <div className="flex items-center justify-center p-12">
+                        <RotatingLines strokeColor="grey" strokeWidth="5" animationDuration="0.75" width="96" visible={true} />
+                     </div>
+                  </div>
+               )}
+            </div>
+            <div className="flex justify-end ">
+               <Link to="/orders">
+                  <button className="py-3 px-6 border shadow-lg">See more orders</button>
+               </Link>
             </div>
          </div>
       </>

@@ -80,7 +80,7 @@ function login() {
    const formSubmitHandler = async (event) => {
       event.preventDefault();
       if (usernameValidation.stringCorrect && passwordValidation.stringCorrect && !usernameValidation.options.empty && !passwordValidation.options.empty) {
-         const response = await axios.get(`/userdata?username=${inputNameRef.current.value}&password=${inputPasswordRef.current.value}`);
+         const response = await axios.get(`/api/userdata?username=${inputNameRef.current.value}&password=${inputPasswordRef.current.value}`);
          localStorage.setItem('user', JSON.stringify(response.data));
          if (response.data.logged_in === true) {
             routeChange();
