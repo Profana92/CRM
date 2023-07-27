@@ -5,6 +5,7 @@ import { RotatingLines } from 'react-loader-spinner';
 import { useDispatch } from 'react-redux';
 import TasksTable from 'components/Pages/Home/TasksTable';
 import LoggedInPerson from 'components/Pages/Home/LoggedInPerson';
+import Calendar from 'components/Pages/Home/Calendar';
 
 function Home() {
    const dispatch = useDispatch();
@@ -28,9 +29,9 @@ function Home() {
    return (
       <>
          <div className="min-h-[calc(100vh-96px)] w-full">
-            <div className=" max-w-[1920px] xl:flex xl:flex-row-reverse m-auto">
+            <div className=" max-w-[1920px] xl:flex xl:flex-row-reverse m-auto ">
                <LoggedInPerson data={loggedInUser} />
-               <div className="w-[calc(100vw-20rem) xl:w-full]">
+               <div className="xl:w-[calc(100vw-20rem)] xl:w-full] shadow-lg border">
                   {fetchedData ? (
                      <TasksTable items={fetchedData} />
                   ) : (
@@ -41,6 +42,10 @@ function Home() {
                      </div>
                   )}
                </div>
+            </div>{' '}
+            <div className=" max-w-[1920px] xl:flex m-auto ">
+               {' '}
+               <Calendar />
             </div>
          </div>
       </>

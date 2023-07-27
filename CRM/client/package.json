@@ -20,6 +20,7 @@
       "@emotion/react": "^11.11.1",
       "@reduxjs/toolkit": "^1.9.5",
       "@syncfusion/ej2-react-grids": "^22.1.39",
+      "@syncfusion/ej2-react-schedule": "^22.1.38",
       "@table-library/react-table-library": "^4.1.4",
       "axios": "^1.4.0",
       "commitizen": "^4.3.0",

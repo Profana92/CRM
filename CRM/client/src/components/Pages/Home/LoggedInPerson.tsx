@@ -2,12 +2,12 @@ function LoggedInPerson(props) {
    console.log(props);
    return (
       <>
-         <div className="min-w-[19rem] xl:ml-4 flex justify-center flex-col p-5 border gap-10">
-            <div className="min-h-[150px] relative">
-               <img src={props.data.userData.picture} alt="" className="rounded-full h-[150px] absolute right-5" />
+         <div className="min-w-[19rem] xl:ml-4 flex flex-row justify-center xl:flex-col p-5 border gap-5 sm:gap-10 xl:gap-24 shadow-lg">
+            <div className="min-h-[150px] xl:relative flex justify-center flex-col">
+               <img src={props.data.userData.picture} alt="" className="rounded-full h-[80px] sm:h-[150px] xl:absolute right-5 shadow-xl" />
             </div>
-            <div>
-               <p>{props.data.userData.username}</p>
+            <div className="flex justify-center flex-col">
+               <p className="text-green-500">{props.data.userData.username}</p>
                <p>
                   {props.data.userData.firstname} {props.data.userData.lastName}
                </p>
