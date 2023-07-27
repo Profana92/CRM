@@ -1,0 +1,11 @@
+[
+  {
+    "username": "Admin_19",
+    "password": "Admin19/",
+    "firstname": "John",
+    "lastName": "Doe",
+    "position": "Sales Team Manager",
+    "picture": "https://randomuser.me/api/portraits/men/4.jpg",
+    "market": "market_1"
+  }
+]
