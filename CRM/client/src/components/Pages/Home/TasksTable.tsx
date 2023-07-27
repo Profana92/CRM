@@ -8,7 +8,7 @@ function TasksTable(props) {
    };
    const toolbarOptions = ['Search', 'Print', 'PdfExport'];
    const selectionSettings = { type: 'Multiple' };
-   console.log('props', props.items);
+
    return (
       <>
          <GridComponent
