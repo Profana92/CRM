@@ -1,5 +1,4 @@
 function LoggedInPerson(props) {
-   console.log(props);
    return (
       <>
          <div className="min-w-[19rem] xl:ml-4 flex flex-row justify-center xl:flex-col p-5 border gap-5 sm:gap-10 xl:gap-24 shadow-lg">
