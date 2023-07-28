@@ -23,8 +23,8 @@ function Sidebar(props: OpenState) {
 
    return (
       <div
-         className={`min-h-[calc(100vh-96px)] w-80 fixed top-12 border-r-2 z-10 bg-white transition-all ease-in-out delay-100 duration-500 ${
-            props.open ? 'left-0' : '-left-80'
+         className={`min-h-[calc(100vh-96px)] w-full lg:w-80 fixed top-12 border-r-2 z-10 bg-white transition-all ease-in-out duration-500 ${
+            props.open ? 'left-0' : '-left-full'
          } `}
       >
          <ul className="flex flex-col">{navList}</ul>

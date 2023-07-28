@@ -29,6 +29,7 @@ const initialPasswordState = {
 function login() {
    const [usernameValidation, setUsernameValidation] = useState(initialUsernameState);
    const [passwordValidation, setPasswordValidation] = useState(initialPasswordState);
+   const [oneOfInputsEmpty, setoneOfInputsEmpty] = useState(false);
 
    const inputNameRef = useRef(null);
    const inputPasswordRef = useRef(null);
@@ -79,6 +80,8 @@ function login() {
    ]);
    const formSubmitHandler = async (event) => {
       event.preventDefault();
+      if (inputNameRef.current.value === '' || inputPasswordRef.current.value === '') setoneOfInputsEmpty(true);
+      else setoneOfInputsEmpty(false);
       if (usernameValidation.stringCorrect && passwordValidation.stringCorrect && !usernameValidation.options.empty && !passwordValidation.options.empty) {
          const response = await axios.get(`/api/userdata?username=${inputNameRef.current.value}&password=${inputPasswordRef.current.value}`);
          localStorage.setItem('user', JSON.stringify(response.data));
@@ -281,61 +284,89 @@ function login() {
    };
 
    return (
-      <>
-         <form>
-            <label htmlFor="username">Username: </label>
-            <input className="h-12 border" type="text" name="username" id="username" ref={inputNameRef} onChange={inputTextValidation} />
-            {usernameValidation.stringCorrect === false && (
-               <div>
-                  <p>
-                     Login field not empty <span>{!usernameValidation.options.empty ? <FcCheckmark /> : <FcCancel />}</span>
-                  </p>
-                  <p>
-                     Login must contain at least 6 letters <span>{usernameValidation.options.longerThanSix ? <FcCheckmark /> : <FcCancel />}</span>
-                  </p>
-                  <p>
-                     Login shorter than 14 letters <span>{usernameValidation.options.shorterThanFourteen ? <FcCheckmark /> : <FcCancel />}</span>
-                  </p>
-                  <p>
-                     Login contains a capital letter <span>{usernameValidation.options.containCapital ? <FcCheckmark /> : <FcCancel />}</span>
-                  </p>
-                  <p>
-                     Login contains a number <span>{usernameValidation.options.containNumber ? <FcCheckmark /> : <FcCancel />}</span>
-                  </p>
-                  <p>
-                     Login contains a special character <span>{usernameValidation.options.containSpecialChar ? <FcCheckmark /> : <FcCancel />}</span>
-                  </p>
-               </div>
-            )}
-            <label htmlFor="password">Password: </label>
-            <input className="h-12 border" type="password" name="password" id="password" ref={inputPasswordRef} onChange={inputPasswordValidation} />
-            {passwordValidation.stringCorrect === false && (
-               <div>
-                  <p>
-                     Password field not empty <span>{!passwordValidation.options.empty ? <FcCheckmark /> : <FcCancel />}</span>
-                  </p>
-                  <p>
-                     Password must contain at least 6 letters<span>{passwordValidation.options.longerThanSix ? <FcCheckmark /> : <FcCancel />}</span>
-                  </p>
-                  <p>
-                     Password shorter than 14 letters <span>{passwordValidation.options.shorterThanFourteen ? <FcCheckmark /> : <FcCancel />}</span>
-                  </p>
-                  <p>
-                     Password contains a capital letter <span>{passwordValidation.options.containCapital ? <FcCheckmark /> : <FcCancel />}</span>
-                  </p>
-                  <p>
-                     Password contains a number <span>{passwordValidation.options.containNumber ? <FcCheckmark /> : <FcCancel />}</span>
-                  </p>
-                  <p>
-                     Password contains a special character <span>{passwordValidation.options.containSpecialChar ? <FcCheckmark /> : <FcCancel />}</span>
-                  </p>
-               </div>
-            )}
-            <button className="m-1 p-2 border bg-slate-500" onClick={formSubmitHandler}>
-               Submit
-            </button>
+      <div className="flex justify-center items-center h-screen">
+         <form className="border py-10 px-12 rounded-lg shadow-lg">
+            <div className="">
+               <label htmlFor="username">Username: </label>
+               <input className="h-10 border w-full mb-5" type="text" name="username" id="username" ref={inputNameRef} onChange={inputTextValidation} />{' '}
+            </div>
+            <div className="text-sm">
+               {usernameValidation.stringCorrect === false && (
+                  <div>
+                     <p className="flex justify-between">
+                        <span>Login field not empty</span>
+                        <span>{!usernameValidation.options.empty ? <FcCheckmark /> : <FcCancel />}</span>
+                     </p>
+                     <p className="flex justify-between">
+                        <span>Login must contain at least 6 letters</span>
+                        <span>{usernameValidation.options.longerThanSix ? <FcCheckmark /> : <FcCancel />}</span>
+                     </p>
+                     <p className="flex justify-between">
+                        <span>Login shorter than 14 letters</span>
+                        <span>{usernameValidation.options.shorterThanFourteen ? <FcCheckmark /> : <FcCancel />}</span>
+                     </p>
+                     <p className="flex justify-between">
+                        <span>Login contains a capital letter</span> <span>{usernameValidation.options.containCapital ? <FcCheckmark /> : <FcCancel />}</span>
+                     </p>
+                     <p className="flex justify-between">
+                        <span>Login contains a number</span> <span>{usernameValidation.options.containNumber ? <FcCheckmark /> : <FcCancel />}</span>
+                     </p>
+                     <p className="flex justify-between">
+                        <span>Login contains a special character</span>
+                        <span>{usernameValidation.options.containSpecialChar ? <FcCheckmark /> : <FcCancel />}</span>
+                     </p>
+                  </div>
+               )}
+            </div>
+            <div className="">
+               <label htmlFor="password">Password: </label>
+               <input
+                  className="h-10 border w-full mb-5 hover:border-slate-300"
+                  type="password"
+                  name="password"
+                  id="password"
+                  ref={inputPasswordRef}
+                  onChange={inputPasswordValidation}
+               />
+            </div>
+            <div className="text-sm">
+               {passwordValidation.stringCorrect === false && (
+                  <div>
+                     <p className="flex justify-between">
+                        <span>Password field not empty</span>
+                        <span>{!passwordValidation.options.empty ? <FcCheckmark /> : <FcCancel />}</span>
+                     </p>
+                     <p className="flex justify-between">
+                        <span>Password must contain at least 6 letters</span>
+                        <span>{passwordValidation.options.longerThanSix ? <FcCheckmark /> : <FcCancel />}</span>
+                     </p>
+                     <p className="flex justify-between">
+                        <span>Password shorter than 14 letters</span>
+                        <span>{passwordValidation.options.shorterThanFourteen ? <FcCheckmark /> : <FcCancel />}</span>
+                     </p>
+                     <p className="flex justify-between">
+                        <span>Password contains a capital letter</span>
+                        <span>{passwordValidation.options.containCapital ? <FcCheckmark /> : <FcCancel />}</span>
+                     </p>
+                     <p className="flex justify-between">
+                        <span>Password contains a number</span>
+                        <span>{passwordValidation.options.containNumber ? <FcCheckmark /> : <FcCancel />}</span>
+                     </p>
+                     <p className="flex justify-between">
+                        <span>Password contains a special character</span>
+                        <span>{passwordValidation.options.containSpecialChar ? <FcCheckmark /> : <FcCancel />}</span>
+                     </p>
+                  </div>
+               )}
+            </div>
+            <div className="">
+               <button className="hover:bg-slate-300 p-2 border bg-slate-200 w-full" onClick={formSubmitHandler}>
+                  Submit
+               </button>
+            </div>
+            {oneOfInputsEmpty ? <p>All fields need to be filled</p> : ''}
          </form>
-      </>
+      </div>
    );
 }
 

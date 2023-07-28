@@ -32,26 +32,6 @@ function OrdersTable(props) {
       .filter((value) => {
          return value != undefined;
       });
-   console.log('data', data);
-   // const data = [...props.items]
-   //    .map((item) => {
-   //       const { name, email, cell, offers } = item;
-   //       const result = offers.map((offer) => ({
-   //          name,
-   //          email,
-   //          cell,
-   //          offer: {
-   //             uniqueiD: offer.uniqueiD,
-   //             dateOfCreation: offer.dateOfCreation,
-   //             products: offer.products,
-   //             status: offer.status,
-   //             associatedOrder: offer.associatedOrder,
-   //          },
-   //       }));
-   //       return result;
-   //    })
-   //    .flat();
-   // console.log(data);
 
    return (
       <>
