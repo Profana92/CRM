@@ -34,11 +34,11 @@ Fonts:
 
 Colors:
 
-F4F3F5
-60D369
-D3925C
-E65D61
-1A1921
+#F4F3F5
+#60D369
+#D3925C
+#E65D61
+#1A1921
 
 Sizes:
 Header height:4rem

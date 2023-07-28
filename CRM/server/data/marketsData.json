@@ -1,6 +1,11 @@
 [
   {
     "marketName": "market_1",
+    "notifications": [
+      { "id": 1, "message": "Call me ASAP - Mark Jetski" },
+      { "id": 2, "message": "Meeting at 2 PM in conference room" },
+      { "id": 3, "message": "New contact request - customer: Evan Morris" }
+    ],
     "clients": [
       {
         "name": "Bertram Madsen",

@@ -27,7 +27,7 @@ function Home() {
       try {
          const response = await axios.get(`/api/markets`);
          const filteredResponse = response.data.find((item) => {
-            return item.marketName === 'market_1';
+            return item.marketName === JSON.parse(localStorage.getItem('user')).userData.market;
          });
          setFetchedMarketsData(filteredResponse);
       } catch (error) {
@@ -93,9 +93,9 @@ function Home() {
                   </div>
                )}
             </div>
-            <div className="flex justify-end mb-5">
+            <div className="flex justify-end mb-5 max-w-[1920px] m-auto">
                <Link to="/orders">
-                  <button className="py-3 px-6 border shadow-lg">See more orders</button>
+                  <button className="py-3 px-6 border shadow-lg">See more offers</button>
                </Link>
             </div>
             <div className=" max-w-[1920px] m-auto shadow-lg border mb-5">
@@ -109,7 +109,7 @@ function Home() {
                   </div>
                )}
             </div>
-            <div className="flex justify-end ">
+            <div className="flex justify-end max-w-[1920px] m-auto">
                <Link to="/orders">
                   <button className="py-3 px-6 border shadow-lg">See more orders</button>
                </Link>
