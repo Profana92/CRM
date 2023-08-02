@@ -1,11 +1,11 @@
-import { Outlet, useLocation } from 'react-router-dom';
 import Sidebar from 'components/Header/Sidebar/Sidebar';
 import SidebarsRight from 'components/Header/SidebarsRight/SidebarsRight';
 import Footer from 'components/Footer/Footer';
 import Header from 'components/Header/Header';
-import { useState, useEffect } from 'react';
 import axios from 'axios';
-
+import { Outlet, useLocation } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router';
 export default function Root() {
    const [open, setOpen] = useState(false);
    const { pathname } = useLocation();
@@ -14,7 +14,8 @@ export default function Root() {
    const [bellNotificationIndicator, setBellNotificationIndicator] = useState(true);
    const [searchOpen, setSearchOpen] = useState(false);
    const [dotsOpen, setdotsOpen] = useState(false);
-
+   const [searchResult, setSetsearchResult] = useState([]);
+   const navigate = useNavigate();
    useEffect(() => {
       window.scrollTo(0, 0);
    }, [pathname]);
@@ -22,11 +23,16 @@ export default function Root() {
       getNotifications();
    }, []);
 
+   const logoutHandler = () => {
+      localStorage.setItem('user', JSON.stringify({ logged_in: false }));
+      navigate(0);
+   };
+
    async function getNotifications() {
       try {
-         const response = await axios.get(`/api/markets`);
-         const filteredResponse = response.data.find((item) => {
-            return item.marketName === JSON.parse(localStorage.getItem('user')).userData.market;
+         const response = await axios.get(`/api/notifications`);
+         const filteredResponse = response.data.filter((item) => {
+            return item.userId === JSON.parse(localStorage.getItem('user')).userData.id;
          });
          setbellNotificationData(filteredResponse);
       } catch (error) {
@@ -40,6 +46,22 @@ export default function Root() {
       });
       setdotsOpen(false);
       setbellNotificationOpen(false);
+   };
+
+   const searchData = (event) => {
+      if (event.target.value.length > 2) {
+         console.log(event.target.value);
+         axios
+            .post('/api/products', {
+               title: event.target.value,
+            })
+            .then(function (response) {
+               setSetsearchResult(response.data);
+            })
+            .catch(function (error) {
+               console.log(error);
+            });
+      } else setSetsearchResult([]);
    };
 
    const bellClickHandler = () => {
@@ -69,7 +91,15 @@ export default function Root() {
             dotsClickHandler={dotsClickHandler}
          />
          <Sidebar open={open} setOpen={setOpen} />
-         <SidebarsRight bellNotificationOpen={bellNotificationOpen} bellNotificationData={bellNotificationData} searchOpen={searchOpen} dotsOpen={dotsOpen} />
+         <SidebarsRight
+            searchData={searchData}
+            bellNotificationOpen={bellNotificationOpen}
+            bellNotificationData={bellNotificationData}
+            searchOpen={searchOpen}
+            dotsOpen={dotsOpen}
+            searchResult={searchResult}
+            logoutHandler={logoutHandler}
+         />
          <div className="m-5">
             <Outlet />
          </div>

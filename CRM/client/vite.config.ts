@@ -10,6 +10,8 @@ export default defineConfig({
          '/api/tasks': 'http://localhost:3000',
          '/api/clients': 'http://localhost:3000',
          '/api/markets': 'http://localhost:3000',
+         '/api/products': 'http://localhost:3000',
+         '/api/notifications': 'http://localhost:3000',
       },
    },
 });

@@ -1,4 +1,5 @@
 function SidebarsRight(props) {
+   console.log(props.bellNotificationData);
    return (
       <>
          <div
@@ -7,8 +8,8 @@ function SidebarsRight(props) {
             }`}
          >
             {props.bellNotificationData
-               ? props.bellNotificationData.notifications.map((item) => {
-                    return <p key={item.id}>{item.message}</p>;
+               ? props.bellNotificationData.map((item) => {
+                    return <p key={item.id}>{item.title}</p>;
                  })
                : ''}
          </div>
@@ -18,9 +19,22 @@ function SidebarsRight(props) {
                props.searchOpen ? 'right-0' : '-right-full'
             }`}
          >
-            <div>
-               <input type="text" name="searchInput" id="searchInput" placeholder="Search for product" className="w-full border" />
-               <button className="border py-2 px-5">Search</button>
+            <div className="w-full">
+               <input
+                  type="text"
+                  name="searchInput"
+                  id="searchInput"
+                  placeholder="Search for product"
+                  className="h-8 w-full border"
+                  onChange={props.searchData}
+               />
+               <ol className="list-decimal  list-inside	w-full">
+                  {props.searchResult
+                     ? props.searchResult.map((item) => {
+                          return <li key={item.id}>{item.title}</li>;
+                       })
+                     : ''}
+               </ol>
             </div>
          </div>
 
@@ -29,7 +43,7 @@ function SidebarsRight(props) {
                props.dotsOpen ? 'right-0' : '-right-full'
             }`}
          >
-            <div>This is a dots view</div>
+            <div onClick={props.logoutHandler}>Logout</div>
          </div>
       </>
    );
