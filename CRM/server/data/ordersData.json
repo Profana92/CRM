@@ -1,0 +1,22 @@
+[
+  {
+    "uniqueiD": "Z/01/12/2022",
+    "dateOfCreation": "2023, 1 , 16, 14, 23",
+    "products": [
+      { "name": "Fjallraven - Foldsack No. 1 Backpack", "amount": 1 },
+      { "name": "Pierced Owl Rose Gold Plated Stainless Steel", "amount": 2 }
+    ],
+    "status": "Sent",
+    "associatedOffer": "O/03/12/2022"
+  },
+  {
+    "uniqueiD": "Z/02/12/2022",
+    "dateOfCreation": "2023, 1 , 16, 14, 23",
+    "products": [
+      { "name": "Fjallraven - Foldsack No. 1 Backpack", "amount": 1 },
+      { "name": "Pierced Owl Rose Gold Plated Stainless Steel", "amount": 2 }
+    ],
+    "status": "Sent",
+    "associatedOffer": "O/04/12/2022"
+  }
+]

@@ -1,0 +1,50 @@
+[
+  {
+    "uniqueiD": "O/01/12/2022",
+    "dateOfCreation": "2023, 1 , 15, 10, 32",
+    "products": [
+      { "name": "White Gold Plated Princess", "amount": 3 },
+      { "name": "John Hardy Women's Legends Naga Gold & Silver Dragon Station Chain Bracelet", "amount": 1 }
+    ],
+    "status": "Waiting for reply",
+    "associatedOrder": ""
+  },
+  {
+    "uniqueiD": "O/05/12/2022",
+    "dateOfCreation": "2023, 1 , 15, 10, 32",
+    "products": [{ "name": "John Hardy Women's Legends Naga Gold & Silver Dragon Station Chain Bracelet", "amount": 2 }],
+    "status": "Waiting for reply",
+    "associatedOrder": ""
+  },
+  {
+    "uniqueiD": "O/02/12/2022",
+    "dateOfCreation": "2023, 1 , 17, 10, 01",
+    "products": [
+      { "name": "WD 2TB Elements Portable External", "amount": 1 },
+      { "name": "John Hardy Women's Legends Naga Gold & Silver Dragon Station Chain Bracelet", "amount": 1 },
+      { "name": "Mens Casual Premium Slim Fit T-Shirts", "amount": 1 }
+    ],
+    "status": "Waiting for reply",
+    "associatedOrder": ""
+  },
+  {
+    "uniqueiD": "O/03/12/2022",
+    "dateOfCreation": "2023, 1 , 15, 14, 23",
+    "products": [
+      { "name": "Fjallraven - Foldsack No. 1 Backpack", "amount": 1 },
+      { "name": "Pierced Owl Rose Gold Plated Stainless Steel", "amount": 2 }
+    ],
+    "status": "Completed",
+    "associatedOrder": "Z/01/12/2022/"
+  },
+  {
+    "uniqueiD": "O/04/12/2022",
+    "dateOfCreation": "2023, 1 , 25, 14, 23",
+    "products": [
+      { "name": "Samsung 49-Inch CHG90 144Hz Curved ", "amount": 2 },
+      { "name": "Rain Jacket Women Windbreaker ", "amount": 1 }
+    ],
+    "status": "Completed",
+    "associatedOrder": "Z/02/12/2022"
+  }
+]

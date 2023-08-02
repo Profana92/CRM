@@ -18,7 +18,7 @@ app.get("/api/markets", (req, res) => {
 //login form
 app.get("/api/userdata", (req, res) => {
   let result;
-  if (usersData.find((x) => x.username === req.query.username) && usersData.find((x) => x.password === req.query.password)) {
+  if (usersData.find((x) => x.username === req.query.username && x.password === req.query.password)) {
     result = usersData.find((x) => x.username === req.query.username);
     result.logged_in = true;
   } else {
@@ -27,6 +27,7 @@ app.get("/api/userdata", (req, res) => {
   }
 
   console.log("wynik:", result);
+  console.log("reqbody", req.query);
   res.send({
     userData: {
       username: result.username,

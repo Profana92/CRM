@@ -1,6 +1,7 @@
 [
   {
     "marketName": "market_1",
-    "notifications": [1, 2, 3]
+    "notifications": [1, 2, 3],
+    "clients": [1, 2, 3, 4]
   }
 ]
