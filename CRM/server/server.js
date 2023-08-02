@@ -4,7 +4,7 @@ const port = 3000;
 const fs = require("fs");
 const marketsData = Object.values(JSON.parse(fs.readFileSync("./server/data/marketsData.json")));
 const tasksData = Object.values(JSON.parse(fs.readFileSync("./server/data/usersTasks.json")));
-const usersData = Object.values(JSON.parse(fs.readFileSync("./server/data/users.json")));
+const usersData = Object.values(JSON.parse(fs.readFileSync("./server/data/usersData.json")));
 
 app.get("/api/tasks", (req, res) => {
   res.send(tasksData);
