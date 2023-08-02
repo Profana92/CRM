@@ -1,15 +1,33 @@
 const express = require("express");
+const MiniSearch = require("minisearch");
 const app = express();
+
 const port = 3000;
 const fs = require("fs");
 const marketsData = Object.values(JSON.parse(fs.readFileSync("./server/data/marketsData.json")));
 const tasksData = Object.values(JSON.parse(fs.readFileSync("./server/data/usersTasks.json")));
 const usersData = Object.values(JSON.parse(fs.readFileSync("./server/data/usersData.json")));
+const productsData = Object.values(JSON.parse(fs.readFileSync("./server/data/productsData.json")));
+const notificationsData = Object.values(JSON.parse(fs.readFileSync("./server/data/notificationsData.json")));
+app.use(express.json());
+let miniSearch = new MiniSearch({
+  fields: ["title"], // fields to index for full-text search
+  storeFields: ["title"], // fields to return with search results
+});
+miniSearch.addAll(productsData);
 
 app.get("/api/tasks", (req, res) => {
   res.send(tasksData);
 });
-
+app.post("/api/products", (req, res) => {
+  console.log(req.body);
+  let results = miniSearch.search(req.body.title, { prefix: true });
+  console.log(results);
+  res.send(results);
+});
+app.get("/api/notifications", (req, res) => {
+  res.send(notificationsData);
+});
 // Markets data
 app.get("/api/markets", (req, res) => {
   res.send(marketsData);
@@ -30,6 +48,7 @@ app.get("/api/userdata", (req, res) => {
   console.log("req", req.query);
   res.send({
     userData: {
+      id: result.id,
       username: result.username,
       firstname: result.firstname,
       lastName: result.lastName,

@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "userId": 1,
+    "title": "Meeting in conference room at 3 PM",
+    "dateOfCreation": [5, 5, 2023, 15, 0],
+    "priority": "High",
+    "clientId": 1,
+    "createdBy": 2
+  },
+  {
+    "id": 2,
+    "userId": 1,
+    "title": "Prepare excel spreadsheet - this week sales",
+    "dateOfCreation": [5, 5, 2023, 13, 0],
+    "priority": "Low",
+    "clientId": 1,
+    "createdBy": 2
+  }
+]
