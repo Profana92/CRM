@@ -26,7 +26,6 @@ export default function Root() {
    }
 
    const bellClickHandler = () => {
-      console.log('bell clicked');
       setbellNotificationOpen((prevState) => {
          return !prevState;
       });
@@ -39,7 +38,6 @@ export default function Root() {
       getNotifications();
    }, []);
    const searchHandler = () => {
-      console.log('tu');
       setSearchOpen((prevstate) => {
          return !prevstate;
       });
