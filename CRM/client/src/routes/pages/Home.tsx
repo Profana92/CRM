@@ -57,7 +57,7 @@ function Home() {
    return (
       <>
          <div className="min-h-[calc(100vh-96px)] w-full">
-            <div className=" max-w-[1920px] xl:flex xl:flex-row-reverse m-auto mb-5 ">
+            {/* <div className=" max-w-[1920px] xl:flex xl:flex-row-reverse m-auto mb-5 ">
                <LoggedInPerson data={loggedInUser} />
                <div className="xl:w-[calc(100vw-20rem)] xl:w-full] shadow-lg border self-start">
                   {fetchedData ? (
@@ -113,7 +113,7 @@ function Home() {
                <Link to="/orders">
                   <button className="py-3 px-6 border shadow-lg">See more orders</button>
                </Link>
-            </div>
+            </div> */}
          </div>
       </>
    );

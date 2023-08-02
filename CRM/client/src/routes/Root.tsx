@@ -13,7 +13,16 @@ export default function Root() {
    const [bellNotificationOpen, setbellNotificationOpen] = useState(false);
    const [bellNotificationIndicator, setBellNotificationIndicator] = useState(true);
    const [searchOpen, setSearchOpen] = useState(false);
-   async function getNotifications(limit?: number) {
+   const [dotsOpen, setdotsOpen] = useState(false);
+
+   useEffect(() => {
+      window.scrollTo(0, 0);
+   }, [pathname]);
+   useEffect(() => {
+      getNotifications();
+   }, []);
+
+   async function getNotifications() {
       try {
          const response = await axios.get(`/api/markets`);
          const filteredResponse = response.data.find((item) => {
@@ -25,24 +34,30 @@ export default function Root() {
       }
    }
 
-   const bellClickHandler = () => {
-      setbellNotificationOpen((prevState) => {
-         return !prevState;
-      });
-      setBellNotificationIndicator(false);
-   };
-   useEffect(() => {
-      window.scrollTo(0, 0);
-   }, [pathname]);
-   useEffect(() => {
-      getNotifications();
-   }, []);
    const searchHandler = () => {
       setSearchOpen((prevstate) => {
          return !prevstate;
       });
+      setdotsOpen(false);
+      setbellNotificationOpen(false);
    };
-   console.log(searchOpen);
+
+   const bellClickHandler = () => {
+      setbellNotificationOpen((prevState) => {
+         return !prevState;
+      });
+      setSearchOpen(false);
+      setdotsOpen(false);
+      setBellNotificationIndicator(false);
+   };
+
+   const dotsClickHandler = () => {
+      setdotsOpen((prevstate) => {
+         return !prevstate;
+      });
+      setbellNotificationOpen(false);
+      setSearchOpen(false);
+   };
    return (
       <>
          <Header
@@ -51,9 +66,10 @@ export default function Root() {
             bellClickHandler={bellClickHandler}
             bellNotificationIndicator={bellNotificationIndicator}
             searchHandler={searchHandler}
+            dotsClickHandler={dotsClickHandler}
          />
          <Sidebar open={open} setOpen={setOpen} />
-         <SidebarsRight bellNotificationOpen={bellNotificationOpen} bellNotificationData={bellNotificationData} searchOpen={searchOpen} />
+         <SidebarsRight bellNotificationOpen={bellNotificationOpen} bellNotificationData={bellNotificationData} searchOpen={searchOpen} dotsOpen={dotsOpen} />
          <div className="m-5">
             <Outlet />
          </div>
