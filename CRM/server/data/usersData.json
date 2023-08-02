@@ -1,11 +1,22 @@
 [
   {
-    "username": "Admin_19",
-    "password": "Admin19/",
+    "id": 1,
+    "username": "JohnDoe51/",
+    "password": "SalesTeam1$",
     "firstname": "John",
     "lastName": "Doe",
     "position": "Sales Team Manager",
     "picture": "https://randomuser.me/api/portraits/men/4.jpg",
     "market": "market_1"
+  },
+  {
+    "id": 2,
+    "username": "JaneDoe36&",
+    "password": "Ceo51$",
+    "firstname": "Jane",
+    "lastName": "Doe",
+    "position": "Ceo",
+    "picture": "https://randomuser.me/api/portraits/thumb/women/34.jpg",
+    "market": "all"
   }
 ]
