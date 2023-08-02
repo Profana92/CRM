@@ -12,20 +12,25 @@ function SidebarsRight(props) {
                  })
                : ''}
          </div>
-         {props.searchOpen ? (
-            <div
-               className={`flex fixed right-0 top-12 bg-white border shadow-lg p-5 h-[calc(100vh-96px)] w-full lg:w-80 z-10 transition-all duration-500 ease-in-out ${
-                  props.searchOpen ? 'right-0' : '-right-full'
-               }`}
-            >
-               <div>
-                  <input type="text" name="searchInput" id="searchInput" placeholder="Search for product" className="w-full border" />
-                  <button className="border py-2 px-5">Search</button>
-               </div>
+
+         <div
+            className={`flex fixed top-12 bg-white border shadow-lg p-5 min-h-[calc(100vh-96px)] w-full lg:w-80 z-10 transition-all duration-500 ease-in-out ${
+               props.searchOpen ? 'right-0' : '-right-full'
+            }`}
+         >
+            <div>
+               <input type="text" name="searchInput" id="searchInput" placeholder="Search for product" className="w-full border" />
+               <button className="border py-2 px-5">Search</button>
             </div>
-         ) : (
-            ''
-         )}
+         </div>
+
+         <div
+            className={`flex fixed top-12 bg-white border shadow-lg p-5 min-h-[calc(100vh-96px)] w-full lg:w-80 z-10 transition-all duration-500 ease-in-out ${
+               props.dotsOpen ? 'right-0' : '-right-full'
+            }`}
+         >
+            <div>This is a dots view</div>
+         </div>
       </>
    );
 }

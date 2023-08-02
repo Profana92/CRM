@@ -1,3 +1,4 @@
+import React from 'react';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { HiMagnifyingGlass } from 'react-icons/hi2';
 import { BsFillBellFill, BsThreeDotsVertical } from 'react-icons/bs';
@@ -8,8 +9,13 @@ import { useSelector } from 'react-redux';
 interface OpenState {
    open: boolean;
    setOpen: Function;
+   bellNotificationIndicator: boolean;
+   searchHandler: () => void;
+   bellClickHandler: () => void;
+   dotsClickHandler: () => void;
 }
-function Header(props: OpenState) {
+
+const Header: React.FC<OpenState> = (props) => {
    const activeTitle = useSelector((state: RootState) => state.pageTitle.value);
 
    return (
@@ -38,12 +44,12 @@ function Header(props: OpenState) {
                   }`}
                />
             </div>
-            <div className="flex h-8 w-8 items-center justify-center">
+            <div className="flex h-8 w-8 items-center justify-center" onClick={props.dotsClickHandler}>
                <BsThreeDotsVertical size="1.25rem" />
             </div>
          </div>
       </header>
    );
-}
+};
 
 export default Header;

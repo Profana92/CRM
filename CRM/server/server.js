@@ -27,7 +27,7 @@ app.get("/api/userdata", (req, res) => {
   }
 
   console.log("wynik:", result);
-  console.log("reqbody", req.query);
+  console.log("req", req.query);
   res.send({
     userData: {
       username: result.username,
