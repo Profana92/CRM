@@ -27,14 +27,11 @@ export default function Root() {
       localStorage.setItem('user', JSON.stringify({ logged_in: false }));
       navigate(0);
    };
-
+   const userData = JSON.parse(localStorage.getItem('user'));
    async function getNotifications() {
       try {
-         const response = await axios.get(`/api/notifications`);
-         const filteredResponse = response.data.filter((item) => {
-            return item.userId === JSON.parse(localStorage.getItem('user')).userData.id;
-         });
-         setbellNotificationData(filteredResponse);
+         const response = await axios.get(`/api/notifications?id=${userData.userData.id}`);
+         setbellNotificationData(response);
       } catch (error) {
          console.error(error);
       }
@@ -50,7 +47,6 @@ export default function Root() {
 
    const searchData = (event) => {
       if (event.target.value.length > 2) {
-         console.log(event.target.value);
          axios
             .post('/api/products', {
                title: event.target.value,
@@ -99,8 +95,9 @@ export default function Root() {
             dotsOpen={dotsOpen}
             searchResult={searchResult}
             logoutHandler={logoutHandler}
+            userData={userData}
          />
-         <div className="m-5">
+         <div className="py-12">
             <Outlet />
          </div>
          <Footer />
