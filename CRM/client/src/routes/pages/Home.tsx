@@ -11,45 +11,72 @@ import OrdersTable from 'components/Tables/OrdersTable';
 import { Link } from 'react-router-dom';
 function Home() {
    const dispatch = useDispatch();
-   const [fetchedData, setfetchedData] = useState(null);
+   const [fetchedTasksData, setfetchedTasksData] = useState(null);
    const [fetchedMarketsData, setFetchedMarketsData] = useState(null);
+   const [fetchedOffersData, setFetchedOffersData] = useState(null);
    const [loggedInUser, setloggedInUser] = useState(JSON.parse(localStorage.getItem('user')));
 
-   async function getProducts(limit?: number) {
-      try {
-         const response = await axios.get(`/api/tasks`);
-         setfetchedData(response);
-      } catch (error) {
-         console.error(error);
-      }
-   }
-   async function getOffers(limit?: number) {
-      try {
-         const response = await axios.get(`/api/markets`);
-         const filteredResponse = response.data.find((item) => {
-            return item.marketName === JSON.parse(localStorage.getItem('user')).userData.market;
-         });
-         setFetchedMarketsData(filteredResponse);
-      } catch (error) {
-         console.error(error);
-      }
-   }
+   // async function getProducts(limit?: number) {
+   //    try {
+   //       const response = await axios.get(`/api/tasks`);
+   //       setfetchedData(response);
+   //    } catch (error) {
+   //       console.error(error);
+   //    }
+   // }
 
    useEffect(() => {
       document.title = 'Home';
       dispatch(setPageTitle('Home'));
-      getProducts();
+      getTasks();
       getOffers();
    }, []);
 
+   async function getOffers() {
+      try {
+         const markets = await axios.get(`/api/markets?marketName=${loggedInUser.userData.market}`);
+         const clients = await axios.get(`/api/clients`);
+         let result = [];
+         for (let element of markets.data.clients) {
+            result.push(
+               clients.data.find((item) => {
+                  return item.id === +element;
+               }).offers,
+            );
+         }
+
+         result = result.flat();
+         // console.log('result', result);
+         // console.log('clients', clients.data);
+         result = result.map((offerNumber) => {
+            const clientDetails = clients.data.find((item) => {
+               return item.offers.includes(offerNumber);
+            });
+            return { offerNumber: offerNumber, clientDetails };
+         });
+
+         setFetchedOffersData(result);
+      } catch (error) {
+         console.error(error);
+      }
+   }
+
+   async function getTasks() {
+      try {
+         const response = await axios.get(`/api/tasks?id=${JSON.parse(localStorage.getItem('user')).userData.id}`);
+         setfetchedTasksData(response);
+      } catch (error) {
+         console.error(error);
+      }
+   }
+
    let calendarData = false;
-   if (fetchedData) {
-      calendarData = fetchedData.data.map((item) => {
+   if (fetchedTasksData) {
+      calendarData = fetchedTasksData.data.map((item) => {
          const startDateArray = item.calendarData.StartTime.split(', ');
          const startDate = new Date(...startDateArray);
          const endDateArray = item.calendarData.EndTime.split(', ');
          const endDate = new Date(...endDateArray);
-         // const endDate = new Date(item.calendarData.EndTime);
          return { ...item.calendarData, StartTime: startDate, EndTime: new Date(endDate) };
       });
    }
@@ -57,11 +84,11 @@ function Home() {
    return (
       <>
          <div className="min-h-[calc(100vh-96px)] w-full">
-            {/* <div className=" max-w-[1920px] xl:flex xl:flex-row-reverse m-auto mb-5 ">
+            <div className=" max-w-[1920px] xl:flex xl:flex-row-reverse m-auto mb-5 ">
                <LoggedInPerson data={loggedInUser} />
                <div className="xl:w-[calc(100vw-20rem)] xl:w-full] shadow-lg border self-start">
-                  {fetchedData ? (
-                     <TasksTable items={fetchedData} />
+                  {fetchedTasksData ? (
+                     <TasksTable items={fetchedTasksData} />
                   ) : (
                      <div className="w-full h-full">
                         <div className="flex items-center justify-center p-12 h-full">
@@ -72,7 +99,7 @@ function Home() {
                </div>
             </div>
             <div className=" max-w-[1920px] xl:flex m-auto shadow-lg border mb-5">
-               {calendarData ? (
+               {fetchedTasksData ? (
                   <Calendar items={calendarData} />
                ) : (
                   <div className="w-full">
@@ -82,9 +109,10 @@ function Home() {
                   </div>
                )}
             </div>
+
             <div className=" max-w-[1920px] xl:flex m-auto shadow-lg border mb-5">
-               {fetchedMarketsData ? (
-                  <OffersTable items={fetchedMarketsData.clients} />
+               {fetchedOffersData ? (
+                  <OffersTable items={fetchedOffersData} />
                ) : (
                   <div className="w-full">
                      <div className="flex items-center justify-center p-12">
@@ -93,7 +121,7 @@ function Home() {
                   </div>
                )}
             </div>
-            <div className="flex justify-end mb-5 max-w-[1920px] m-auto">
+            {/*<div className="flex justify-end mb-5 max-w-[1920px] m-auto">
                <Link to="/orders">
                   <button className="py-3 px-6 border shadow-lg">See more offers</button>
                </Link>

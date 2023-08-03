@@ -23,7 +23,7 @@ function Sidebar(props: OpenState) {
 
    return (
       <div
-         className={`min-h-[calc(100vh-96px)] w-full lg:w-80 fixed top-12 border-r-2 z-10 bg-white transition-all ease-in-out duration-500 ${
+      className={`fixed top-12 h-[calc(100vh-96px)] p-5 w-full lg:w-80 border bg-white transition-all duration-500 ease-in-out z-10  overflow-y-auto overflow-x-hidden ${
             props.open ? 'left-0' : '-left-full'
          } `}
       >

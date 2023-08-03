@@ -9,7 +9,10 @@ const tasksData = Object.values(JSON.parse(fs.readFileSync("./server/data/usersT
 const usersData = Object.values(JSON.parse(fs.readFileSync("./server/data/usersData.json")));
 const productsData = Object.values(JSON.parse(fs.readFileSync("./server/data/productsData.json")));
 const notificationsData = Object.values(JSON.parse(fs.readFileSync("./server/data/notificationsData.json")));
+const clientsData = Object.values(JSON.parse(fs.readFileSync("./server/data/clientsData.json")));
+const offersData = Object.values(JSON.parse(fs.readFileSync("./server/data/offersData.json")));
 app.use(express.json());
+
 let miniSearch = new MiniSearch({
   fields: ["title"], // fields to index for full-text search
   storeFields: ["title"], // fields to return with search results
@@ -17,20 +20,47 @@ let miniSearch = new MiniSearch({
 miniSearch.addAll(productsData);
 
 app.get("/api/tasks", (req, res) => {
-  res.send(tasksData);
+  const response = tasksData.filter((item) => item.belongsTo === +req.query.id);
+  res.send(response);
 });
+
 app.post("/api/products", (req, res) => {
-  console.log(req.body);
   let results = miniSearch.search(req.body.title, { prefix: true });
-  console.log(results);
   res.send(results);
 });
+
 app.get("/api/notifications", (req, res) => {
-  res.send(notificationsData);
+  const response = notificationsData.filter((item) => item.userId === +req.query.id);
+  res.send(response);
+});
+// Clients data
+app.get("/api/clients", (req, res) => {
+  if (req.query.id) {
+    const response = clientsData.filter((item) => item.userId === +req.query.id);
+    res.send(response);
+  } else {
+    res.send(clientsData);
+  }
 });
 // Markets data
 app.get("/api/markets", (req, res) => {
-  res.send(marketsData);
+  const filteredResponse = marketsData.find((item) => {
+    return item.marketName === req.query.marketName;
+  });
+  res.send(marketsData[0]);
+});
+// Offers Data
+app.get("/api/offers", (req, res) => {
+  res.send(offersData);
+});
+// users data
+app.get("/api/users", (req, res) => {
+  if (req.query.id) {
+    const response = usersData.filter((item) => item.id === +req.query.id);
+    res.send(response);
+  } else {
+    res.send(clientsData);
+  }
 });
 
 //login form
