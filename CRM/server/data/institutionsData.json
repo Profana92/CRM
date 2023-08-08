@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "name": "Ebay Techs",
+    "location": {
+      "street": "3840 Hope Street",
+      "city": "Dallas",
+      "country": "USA",
+      "postcode": 75202
+    },
+    "phone": "972-209-5334",
+    "clients": [1, 3]
+  },
+  {
+    "id": 2,
+    "name": "JCPenney CardPlus ",
+    "location": {
+      "street": "1024 Ashmor Drive",
+      "city": "Brainerd",
+      "country": "USA",
+      "postcode": 56401
+    },
+    "phone": "218-232-7950",
+    "clients": [2, 4]
+  }
+]

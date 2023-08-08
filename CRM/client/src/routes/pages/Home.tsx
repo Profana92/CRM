@@ -76,8 +76,8 @@ function Home() {
 
    return (
       <>
-         <div className="min-h-[calc(100vh-96px)] w-full">
-            <div className=" max-w-[1920px] xl:flex xl:flex-row-reverse m-auto mb-5 ">
+         <div className="w-full">
+            <div className=" max-w-[1920px] xl:flex xl:flex-row-reverse m-auto mb-5 mt-5">
                <LoggedInPerson data={loggedInUser} />
                <div className="xl:w-[calc(100vw-20rem)] xl:w-full] shadow-lg border self-start">
                   {fetchedTasksData ? (

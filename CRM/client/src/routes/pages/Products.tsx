@@ -26,8 +26,8 @@ function Products() {
    }, []);
 
    return (
-      <div className="shadow-lg min-h-[calc(100vh-96px)] w-full p-5">
-         <div className=" max-w-[1920px] xl:flex xl:flex-row-reverse m-auto mb-5 ">
+      <div className="w-full ">
+         <div className="shadow-lg max-w-[1920px] xl:flex xl:flex-row-reverse m-auto my-5">
             <ProductsTable items={fetchedData} />
          </div>
       </div>
