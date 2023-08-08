@@ -15,6 +15,7 @@ export default defineConfig({
          '/api/notifications': 'http://localhost:3000',
          '/api/users': 'http://localhost:3000',
          '/api/offers': 'http://localhost:3000',
+         '/api/orders': 'http://localhost:3000',
          '/api/institutions': 'http://localhost:3000',
       },
    },

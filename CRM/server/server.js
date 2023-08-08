@@ -11,6 +11,7 @@ const productsData = Object.values(JSON.parse(fs.readFileSync("./server/data/pro
 const notificationsData = Object.values(JSON.parse(fs.readFileSync("./server/data/notificationsData.json")));
 const clientsData = Object.values(JSON.parse(fs.readFileSync("./server/data/clientsData.json")));
 const offersData = Object.values(JSON.parse(fs.readFileSync("./server/data/offersData.json")));
+const ordersData = Object.values(JSON.parse(fs.readFileSync("./server/data/ordersData.json")));
 const institutionsData = Object.values(JSON.parse(fs.readFileSync("./server/data/institutionsData.json")));
 app.use(express.json());
 
@@ -58,6 +59,10 @@ app.get("/api/markets", (req, res) => {
 // Offers Data
 app.get("/api/offers", (req, res) => {
   res.send(offersData);
+});
+// Orders Data
+app.get("/api/orders", (req, res) => {
+  res.send(ordersData);
 });
 // users data
 app.get("/api/users", (req, res) => {
