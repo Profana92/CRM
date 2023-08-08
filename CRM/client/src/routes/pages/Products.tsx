@@ -4,125 +4,32 @@ import { setPageTitle } from 'features/currentPageTitleSlice';
 import axios from 'axios';
 import TableProducts from 'components/Tables/TableProducts';
 import { RotatingLines } from 'react-loader-spinner';
+import ProductsTable from 'components/Tables/ProductsTable';
 function Products() {
    const [fetchedData, setfetchedData] = useState(null);
    /** Products download */
-   async function getProducts(limit?: number) {
+   async function getProducts() {
       try {
-         const response = await axios.get(`https://fakestoreapi.com/products${limit ? `?limit=${limit}` : ''}`);
-         setfetchedData(response);
+         const response = await axios.get(`/api/productsData`);
+         setfetchedData(response.data);
       } catch (error) {
          console.error(error);
       }
    }
-
+   console.log(fetchedData);
    const dispatch = useDispatch();
 
    useEffect(() => {
       document.title = 'Products';
-      getProducts(20);
+      getProducts();
       dispatch(setPageTitle('Products'));
    }, []);
 
    return (
       <div className="shadow-lg min-h-[calc(100vh-96px)] w-full p-5">
-         {fetchedData ? (
-            <TableProducts products={fetchedData} />
-         ) : (
-            <div className="flex items-center justify-center">
-               <RotatingLines strokeColor="grey" strokeWidth="5" animationDuration="0.75" width="96" visible={true} />
-            </div>
-         )}
-         dsd
-         <br />
-         dsd
-         <br />
-         dsd
-         <br />
-         dsd
-         <br />
-         dsd
-         <br />
-         dsd
-         <br />
-         dsd
-         <br />
-         dsd
-         <br />
-         dsd
-         <br />
-         dsd
-         <br />
-         dsd
-         <br />
-         dsd
-         <br />
-         dsd
-         <br />
-         dsd
-         <br />
-         dsd
-         <br />
-         dsd
-         <br />
-         dsd
-         <br />
-         dsd
-         <br />
-         dsd
-         <br />
-         dsd
-         <br />
-         dsd
-         <br />
-         dsd
-         <br />
-         dsd
-         <br />
-         dsd
-         <br />
-         dsd
-         <br />
-         dsd
-         <br />
-         dsd
-         <br />
-         dsd
-         <br />
-         dsd
-         <br />
-         dsd
-         <br />
-         dsd
-         <br />
-         dsd
-         <br />
-         dsd
-         <br />
-         dsd
-         <br />
-         dsd
-         <br />
-         dsd
-         <br />
-         dsd
-         <br />
-         dsd
-         <br />
-         dsd
-         <br />
-         dsd
-         <br />
-         dsd
-         <br />
-         dsd
-         <br />
-         dsd
-         <br />
-         dsd
-         <br />
-         dsd
-         <br />
+         <div className=" max-w-[1920px] xl:flex xl:flex-row-reverse m-auto mb-5 ">
+            <ProductsTable items={fetchedData} />
+         </div>
       </div>
    );
 }

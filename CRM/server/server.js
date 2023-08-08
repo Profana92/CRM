@@ -28,7 +28,9 @@ app.post("/api/products", (req, res) => {
   let results = miniSearch.search(req.body.title, { prefix: true });
   res.send(results);
 });
-
+app.get("/api/productsData", (req, res) => {
+  res.send(productsData);
+});
 app.get("/api/notifications", (req, res) => {
   const response = notificationsData.filter((item) => item.userId === +req.query.id);
   res.send(response);
