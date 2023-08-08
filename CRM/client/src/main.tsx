@@ -11,6 +11,7 @@ import Products from 'routes/pages/Products.tsx';
 import Clients from 'routes/pages/Clients.tsx';
 import Institutions from 'routes/pages/Institutions.tsx';
 import Offers from 'routes/pages/Offers.tsx';
+import Orders from 'routes/pages/Orders.tsx';
 import LoginForm from 'routes/pages/login/login.tsx';
 import PrivateRoute from 'routes/pages/login/privateRoute.tsx';
 import { registerLicense } from '@syncfusion/ej2-base';
@@ -71,7 +72,7 @@ const router = createBrowserRouter([
             path: 'orders',
             element: (
                <PrivateRoute>
-                  <Products />
+                  <Orders />
                </PrivateRoute>
             ),
          },
