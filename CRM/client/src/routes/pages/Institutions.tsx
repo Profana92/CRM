@@ -3,17 +3,19 @@ import { useDispatch } from 'react-redux';
 import { setPageTitle } from 'features/currentPageTitleSlice';
 import axios from 'axios';
 import { RotatingLines } from 'react-loader-spinner';
-import ClientsTable from 'components/Tables/ClientsTable';
-function Clients() {
+import InstitutionsTable from 'components/Tables/InstitutionsTable';
+function Institutions() {
    const [fetchedUsers, setfetchedUsers] = useState(null);
    const [loggedInUser] = useState(JSON.parse(localStorage.getItem('user')));
    /** Products download */
-   async function getClients() {
+   async function getInstitutions() {
       try {
          const markets = await axios.get(`/api/markets?marketName=${loggedInUser.userData.market}`);
-         const clients = await axios.get(`/api/clients`);
-         const result = markets.data.clients.map((element) => {
-            return clients.data.find((item) => {
+         const institutions = await axios.get(`/api/institutions`);
+         console.log('markets', markets.data);
+         console.log('institutions', institutions.data);
+         const result = markets.data.institutions.map((element) => {
+            return institutions.data.find((item) => {
                return element === +item.id;
             });
          });
@@ -25,16 +27,16 @@ function Clients() {
 
    const dispatch = useDispatch();
    useEffect(() => {
-      document.title = 'Clients';
-      getClients();
-      dispatch(setPageTitle('Clients'));
+      document.title = 'Institutions';
+      getInstitutions();
+      dispatch(setPageTitle('Institutions'));
    }, []);
 
    return (
       <div className="w-full ">
          <div className="shadow-lg max-w-[1920px] xl:flex xl:flex-row-reverse m-auto my-5">
             {fetchedUsers ? (
-               <ClientsTable items={fetchedUsers} />
+               <InstitutionsTable items={fetchedUsers} />
             ) : (
                <div className="w-full h-full">
                   <div className="flex items-center justify-center p-12 h-full">
@@ -47,4 +49,4 @@ function Clients() {
    );
 }
 
-export default Clients;
+export default Institutions;

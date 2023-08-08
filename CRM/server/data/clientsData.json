@@ -46,7 +46,8 @@
       "medium": "https://randomuser.me/api/portraits/med/women/9.jpg",
       "thumbnail": "https://randomuser.me/api/portraits/thumb/women/9.jpg"
     },
-    "offers": ["O/02/12/2022"]
+    "offers": ["O/02/12/2022"],
+    "orders": []
   },
   {
     "id": 3,

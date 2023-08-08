@@ -97,7 +97,7 @@ export default function Root() {
             logoutHandler={logoutHandler}
             userData={userData}
          />
-         <div className="py-20">
+         <div className="pt-12 pb-12 min-h-[calc(100vh-96px)]">
             <Outlet />
          </div>
          <Footer />

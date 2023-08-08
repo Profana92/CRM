@@ -11,6 +11,7 @@ const productsData = Object.values(JSON.parse(fs.readFileSync("./server/data/pro
 const notificationsData = Object.values(JSON.parse(fs.readFileSync("./server/data/notificationsData.json")));
 const clientsData = Object.values(JSON.parse(fs.readFileSync("./server/data/clientsData.json")));
 const offersData = Object.values(JSON.parse(fs.readFileSync("./server/data/offersData.json")));
+const institutionsData = Object.values(JSON.parse(fs.readFileSync("./server/data/institutionsData.json")));
 app.use(express.json());
 
 let miniSearch = new MiniSearch({
@@ -30,6 +31,9 @@ app.post("/api/products", (req, res) => {
 });
 app.get("/api/productsData", (req, res) => {
   res.send(productsData);
+});
+app.get("/api/institutions", (req, res) => {
+  res.send(institutionsData);
 });
 app.get("/api/notifications", (req, res) => {
   const response = notificationsData.filter((item) => item.userId === +req.query.id);
