@@ -1,6 +1,6 @@
 import { ColumnDirective, ColumnsDirective, Filter, GridComponent, Group, Inject, Page, Sort, Resize, Toolbar, PdfExport } from '@syncfusion/ej2-react-grids';
 
-function OffersTable(props) {
+function ProductsTable(props) {
    let grid;
    const pageSettings = { pageSize: 10, pageSizes: true };
    const toolbarOptions = ['Search', 'Print', 'PdfExport'];
@@ -9,6 +9,13 @@ function OffersTable(props) {
          grid.pdfExport();
       }
    };
+   function imageTemplate(props) {
+      const image = props.image;
+      return <img src={image} alt={'Product image'} className="w-10 ml-auto" />;
+   }
+   function priceTemplate(props) {
+      return props.price + ' $';
+   }
 
    return (
       <>
@@ -27,11 +34,12 @@ function OffersTable(props) {
             loadingIndicator={{ indicatorType: 'Shimmer' }}
          >
             <ColumnsDirective>
-               <ColumnDirective field="offerNumber" width="100" textAlign="Right" headerText="Offer number" />
-               <ColumnDirective field="clientDetails.name" width="100" textAlign="Right" headerText="Customer name" />
-               <ColumnDirective field="clientDetails.email" width="100" textAlign="Right" headerText="E-mail" />
-               <ColumnDirective field="clientDetails.cell" width="100" textAlign="Right" headerText="Phone" />
-               <ColumnDirective field="offerData.status" width="100" textAlign="Right" headerText="Status" />
+               <ColumnDirective field="id" width="100" textAlign="Right" headerText="ID" />
+               <ColumnDirective field="title" width="100" textAlign="Right" headerText="Title" />
+               <ColumnDirective field="description" width="100" textAlign="Right" headerText="Description" />
+               <ColumnDirective field="category" width="100" textAlign="Right" headerText="Category" />
+               <ColumnDirective width="100" textAlign="Right" headerText="Price" template={priceTemplate} />
+               <ColumnDirective width="100" textAlign="Right" headerText="Image" template={imageTemplate} />
             </ColumnsDirective>
             <Inject services={[Page, Sort, Filter, Group, Resize, Toolbar, PdfExport]} />
          </GridComponent>
@@ -39,4 +47,4 @@ function OffersTable(props) {
    );
 }
 
-export default OffersTable;
+export default ProductsTable;

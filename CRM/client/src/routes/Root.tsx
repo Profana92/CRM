@@ -97,7 +97,7 @@ export default function Root() {
             logoutHandler={logoutHandler}
             userData={userData}
          />
-         <div className="py-12">
+         <div className="py-20">
             <Outlet />
          </div>
          <Footer />

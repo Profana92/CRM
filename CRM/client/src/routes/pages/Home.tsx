@@ -16,15 +16,6 @@ function Home() {
    const [fetchedOffersData, setFetchedOffersData] = useState(null);
    const [loggedInUser, setloggedInUser] = useState(JSON.parse(localStorage.getItem('user')));
 
-   // async function getProducts(limit?: number) {
-   //    try {
-   //       const response = await axios.get(`/api/tasks`);
-   //       setfetchedData(response);
-   //    } catch (error) {
-   //       console.error(error);
-   //    }
-   // }
-
    useEffect(() => {
       document.title = 'Home';
       dispatch(setPageTitle('Home'));
@@ -36,6 +27,7 @@ function Home() {
       try {
          const markets = await axios.get(`/api/markets?marketName=${loggedInUser.userData.market}`);
          const clients = await axios.get(`/api/clients`);
+         const offers = await axios.get(`/api/offers`);
          let result = [];
          for (let element of markets.data.clients) {
             result.push(
@@ -46,13 +38,14 @@ function Home() {
          }
 
          result = result.flat();
-         // console.log('result', result);
-         // console.log('clients', clients.data);
          result = result.map((offerNumber) => {
             const clientDetails = clients.data.find((item) => {
                return item.offers.includes(offerNumber);
             });
-            return { offerNumber: offerNumber, clientDetails };
+            const offerData = offers.data.find((item) => {
+               return item.uniqueiD.includes(offerNumber);
+            });
+            return { offerNumber: offerNumber, clientDetails, offerData };
          });
 
          setFetchedOffersData(result);
