@@ -8,6 +8,7 @@ Technologies:
 - [ReactRouter](https://reactrouter.com/en/main)
 - [Redux Toolkit](https://redux-toolkit.js.org/)
 - [Express](https://expressjs.com/en/starter/installing.html)
+  
 * [Typescript](https://www.typescriptlang.org/)
 * [Tailwind CSS](https://tailwindcss.com/)
 * [Vite](https://vitejs.dev/)
