@@ -2,7 +2,23 @@ import { useRef, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FcCheckmark, FcCancel } from 'react-icons/fc';
 import axios from 'axios';
-const initialUsernameState = {
+
+// Typescript Types
+interface loginDataState {
+   stringCorrect: boolean;
+   loginDataCorrect: boolean;
+   options: {
+      empty: boolean;
+      longerThanSix: boolean;
+      shorterThanFourteen: boolean;
+      containCapital: boolean;
+      containNumber: boolean;
+      containSpecialChar: boolean;
+   };
+}
+
+// Variables
+const initialUsernameState: loginDataState = {
    stringCorrect: true,
    loginDataCorrect: false,
    options: {
@@ -14,7 +30,7 @@ const initialUsernameState = {
       containSpecialChar: false,
    },
 };
-const initialPasswordState = {
+const initialPasswordState: loginDataState = {
    stringCorrect: true,
    loginDataCorrect: false,
    options: {
@@ -31,8 +47,8 @@ function login() {
    const [passwordValidation, setPasswordValidation] = useState(initialPasswordState);
    const [oneOfInputsEmpty, setoneOfInputsEmpty] = useState(false);
 
-   const inputNameRef = useRef(null);
-   const inputPasswordRef = useRef(null);
+   const inputNameRef = useRef<HTMLInputElement>(null);
+   const inputPasswordRef = useRef<HTMLInputElement>(null);
 
    let navigate = useNavigate();
    const routeChange = () => {
@@ -78,29 +94,32 @@ function login() {
       passwordValidation.options.longerThanSix,
       passwordValidation.options.shorterThanFourteen,
    ]);
-   const formSubmitHandler = async (event) => {
+   const formSubmitHandler = async (event: React.FormEvent<HTMLButtonElement>) => {
       event.preventDefault();
-      if (inputNameRef.current.value === '' || inputPasswordRef.current.value === '') setoneOfInputsEmpty(true);
+      if (inputNameRef?.current?.value === '' || inputPasswordRef?.current?.value === '') setoneOfInputsEmpty(true);
       else setoneOfInputsEmpty(false);
       if (usernameValidation.stringCorrect && passwordValidation.stringCorrect && !usernameValidation.options.empty && !passwordValidation.options.empty) {
-         const response = await axios.get(`/api/userdata?username=${inputNameRef.current.value}&password=${inputPasswordRef.current.value}`);
+         let response;
+         if (inputNameRef?.current?.value && inputPasswordRef?.current?.value) {
+            response = await axios.get(`/api/userdata?username=${inputNameRef.current.value}&password=${inputPasswordRef.current.value}`);
+         } else return;
          localStorage.setItem('user', JSON.stringify(response.data));
          if (response.data.logged_in === true) {
             routeChange();
          } else {
             setUsernameValidation(initialUsernameState);
-            inputNameRef.current.value = '';
-            inputPasswordRef.current.value = '';
+            if (inputNameRef?.current?.value) inputNameRef.current.value = '';
+            if (inputPasswordRef?.current?.value) inputPasswordRef.current.value = '';
          }
       }
    };
-   const inputTextValidation = (event) => {
+   const inputTextValidation = (event: React.ChangeEvent<HTMLInputElement>) => {
       const inputValue = event.target.value.trim();
 
       let containsUppercaseLetter = false;
 
       function containsUppercase() {
-         function isUpperCase(str) {
+         function isUpperCase(str: string) {
             return str === str.toUpperCase() && str !== str.toLowerCase();
          }
          if (inputValue) {
@@ -118,19 +137,19 @@ function login() {
                  });
          }
       }
-      function isLongerThanZero(str) {
+      function isLongerThanZero(str: string) {
          return str.length > 0;
       }
-      function isLongerThanSix(str) {
+      function isLongerThanSix(str: string) {
          return str.length > 5;
       }
-      function isShorterThanFourteen(str) {
+      function isShorterThanFourteen(str: string) {
          return str.length < 14;
       }
-      function containsNumbers(str) {
+      function containsNumbers(str: string) {
          return /\d/.test(str);
       }
-      function containsSpecialCharacter(str) {
+      function containsSpecialCharacter(str: string) {
          const regex = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
          return regex.test(str);
       }
@@ -183,12 +202,12 @@ function login() {
            });
       // Check all and set string to correct
    };
-   const inputPasswordValidation = (event) => {
+   const inputPasswordValidation = (event: React.ChangeEvent<HTMLInputElement>) => {
       const inputValue = event.target.value.trim();
       let containsUppercaseLetter = false;
 
       function containsUppercase() {
-         function isUpperCase(str) {
+         function isUpperCase(str: string) {
             return str === str.toUpperCase() && str !== str.toLowerCase();
          }
          if (inputValue) {
@@ -206,19 +225,19 @@ function login() {
                  });
          }
       }
-      function isLongerThanZero(str) {
+      function isLongerThanZero(str: string) {
          return str.length > 0;
       }
-      function isLongerThanSix(str) {
+      function isLongerThanSix(str: string) {
          return str.length > 5;
       }
-      function isShorterThanFourteen(str) {
+      function isShorterThanFourteen(str: string) {
          return str.length < 14;
       }
-      function containsNumbers(str) {
+      function containsNumbers(str: string) {
          return /\d/.test(str);
       }
-      function containsSpecialCharacter(str) {
+      function containsSpecialCharacter(str: string) {
          const regex = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
          return regex.test(str);
       }
