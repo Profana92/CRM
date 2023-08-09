@@ -1,5 +1,12 @@
 # CRM
 
+To run:
+
+1. Clone repo.
+2. cd crm && npm install && cd client && npm install <---install dependencies
+3. cd crm && npm start <---starts Express Server
+4. new terminal window and type command: cd crm/client && npm run dev <---starts Vite Server
+
 This is a simple CRM project
 
 Technologies:
@@ -8,9 +15,11 @@ Technologies:
 - [ReactRouter](https://reactrouter.com/en/main)
 - [Redux Toolkit](https://redux-toolkit.js.org/)
 - [Express](https://expressjs.com/en/starter/installing.html)
+
 * [Typescript](https://www.typescriptlang.org/)
 * [Tailwind CSS](https://tailwindcss.com/)
 * [Vite](https://vitejs.dev/)
+* [EJ2 UI library](https://ej2.syncfusion.com/home/react.html#platform)
 
 The project should have:
 
@@ -39,9 +48,8 @@ Colors:
 
 Sizes:
 
-| Element | Type | Size |
-| --- | --- | --- |
-| Header | fixed | 4rem |
-| Body | flexible | 1fr/100% |
-| Footer | fixed | 4rem |
-
+| Element | Type     | Size     |
+| ------- | -------- | -------- |
+| Header  | fixed    | 4rem     |
+| Body    | flexible | 1fr/100% |
+| Footer  | fixed    | 4rem     |
