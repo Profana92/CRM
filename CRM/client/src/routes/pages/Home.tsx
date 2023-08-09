@@ -7,14 +7,77 @@ import TasksTable from 'components/Tables/TasksTable';
 import OffersTable from 'components/Tables/OffersTable';
 import LoggedInPerson from 'components/Pages/Home/LoggedInPerson';
 import Calendar from 'components/Pages/Home/Calendar';
-import OrdersTable from 'components/Tables/OrdersTable';
-import { Link } from 'react-router-dom';
+
+interface clientsInterface {
+   cell: string;
+   email: string;
+   id: number;
+   location: { street: string; city: string; country: string; postcode: number };
+   loginData: { uuid: string; username: string; password: string };
+   name: string;
+   offers: string[];
+   orders: string[];
+   phone: string;
+   picture: { large: string; medium: string; thumbnail: string };
+}
+
+interface offerInterface {
+   associatedOrder: string;
+   dateOfCreation: string;
+   products: { amount: number; name: string }[];
+   status: string;
+   uniqueiD: string;
+}
+
+type fetchedOfferStateInterface = {
+   offerNumber: number;
+   clientDetails: {};
+   offerData: {};
+}[];
+
+interface AxiosResponseInterface {
+   config: Object;
+   data: [];
+   headers: Object;
+   request: Object;
+   status: number;
+   statusText: string;
+}
+
+interface fetchedTasksDataMapItemInterface {
+   belongsTo: number;
+   calendarData: {
+      Id: number;
+      Subject: string;
+      StartTime: string;
+      EndTime: string;
+      IsAllDay: false;
+      Priority: string;
+
+      Status: string;
+   };
+   clientId: number;
+   createdBy: number;
+   dateOfCreation: string;
+   priority: string;
+   taskId: number;
+   title: string;
+}
+type calendarDataType = {
+   EndTime: Date;
+   Id: number;
+   IsAllDay: boolean;
+   Priority: string;
+   StartTime: Date;
+   Status: string;
+   Subject: string;
+}[];
+
 function Home() {
    const dispatch = useDispatch();
-   const [fetchedTasksData, setfetchedTasksData] = useState(null);
-   const [fetchedMarketsData, setFetchedMarketsData] = useState(null);
-   const [fetchedOffersData, setFetchedOffersData] = useState(null);
-   const [loggedInUser, setloggedInUser] = useState(JSON.parse(localStorage.getItem('user')));
+   const [fetchedTasksData, setfetchedTasksData] = useState<AxiosResponseInterface | null>(null);
+   const [fetchedOffersData, setFetchedOffersData] = useState<fetchedOfferStateInterface | null>(null);
+   const [loggedInUser] = useState(JSON.parse(localStorage.getItem('user')!));
 
    useEffect(() => {
       document.title = 'Home';
@@ -31,7 +94,7 @@ function Home() {
          let result = [];
          for (let element of markets.data.clients) {
             result.push(
-               clients.data.find((item) => {
+               clients.data.find((item: clientsInterface) => {
                   return item.id === +element;
                }).offers,
             );
@@ -39,10 +102,10 @@ function Home() {
 
          result = result.flat();
          result = result.map((offerNumber) => {
-            const clientDetails = clients.data.find((item) => {
+            const clientDetails = clients.data.find((item: clientsInterface) => {
                return item.offers.includes(offerNumber);
             });
-            const offerData = offers.data.find((item) => {
+            const offerData = offers.data.find((item: offerInterface) => {
                return item.uniqueiD.includes(offerNumber);
             });
             return { offerNumber: offerNumber, clientDetails, offerData };
@@ -56,16 +119,17 @@ function Home() {
 
    async function getTasks() {
       try {
-         const response = await axios.get(`/api/tasks?id=${JSON.parse(localStorage.getItem('user')).userData.id}`);
-         setfetchedTasksData(response);
+         const response = await axios.get(`/api/tasks?id=${JSON.parse(localStorage.getItem('user')!).userData.id}`);
+
+         setfetchedTasksData(response as AxiosResponseInterface);
       } catch (error) {
          console.error(error);
       }
    }
 
-   let calendarData = false;
+   let calendarData: boolean | calendarDataType = false;
    if (fetchedTasksData) {
-      calendarData = fetchedTasksData.data.map((item) => {
+      calendarData = fetchedTasksData.data.map((item: fetchedTasksDataMapItemInterface) => {
          const startDateArray = item.calendarData.StartTime.split(', ');
          const startDate = new Date(...startDateArray);
          const endDateArray = item.calendarData.EndTime.split(', ');
@@ -114,27 +178,6 @@ function Home() {
                   </div>
                )}
             </div>
-            {/*<div className="flex justify-end mb-5 max-w-[1920px] m-auto">
-               <Link to="/orders">
-                  <button className="py-3 px-6 border shadow-lg">See more offers</button>
-               </Link>
-            </div>
-            <div className=" max-w-[1920px] m-auto shadow-lg border mb-5">
-               {fetchedMarketsData ? (
-                  <OrdersTable items={fetchedMarketsData.clients} />
-               ) : (
-                  <div className="w-full">
-                     <div className="flex items-center justify-center p-12">
-                        <RotatingLines strokeColor="grey" strokeWidth="5" animationDuration="0.75" width="96" visible={true} />
-                     </div>
-                  </div>
-               )}
-            </div>
-            <div className="flex justify-end max-w-[1920px] m-auto">
-               <Link to="/orders">
-                  <button className="py-3 px-6 border shadow-lg">See more orders</button>
-               </Link>
-            </div> */}
          </div>
       </>
    );

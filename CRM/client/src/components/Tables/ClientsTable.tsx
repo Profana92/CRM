@@ -1,7 +1,6 @@
 import { ColumnDirective, ColumnsDirective, Filter, GridComponent, Group, Inject, Page, Sort, Resize, Toolbar, PdfExport } from '@syncfusion/ej2-react-grids';
 
 function ClientsTable(props) {
-   console.log(props.items);
    let grid;
    const pageSettings = { pageSize: 10, pageSizes: true };
    const toolbarOptions = ['Search', 'Print', 'PdfExport'];
