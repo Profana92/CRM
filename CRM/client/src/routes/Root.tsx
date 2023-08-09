@@ -6,16 +6,26 @@ import axios from 'axios';
 import { Outlet, useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router';
+
+interface AxiosResponseInterface {
+   config: Object;
+   data: [];
+   headers: Object;
+   status: number;
+   statusText: string;
+}
+
 export default function Root() {
    const [open, setOpen] = useState(false);
    const { pathname } = useLocation();
-   const [bellNotificationData, setbellNotificationData] = useState();
+   const [bellNotificationData, setbellNotificationData] = useState<AxiosResponseInterface | null>(null);
    const [bellNotificationOpen, setbellNotificationOpen] = useState(false);
    const [bellNotificationIndicator, setBellNotificationIndicator] = useState(true);
    const [searchOpen, setSearchOpen] = useState(false);
    const [dotsOpen, setdotsOpen] = useState(false);
    const [searchResult, setSetsearchResult] = useState([]);
    const navigate = useNavigate();
+
    useEffect(() => {
       window.scrollTo(0, 0);
    }, [pathname]);
@@ -23,11 +33,11 @@ export default function Root() {
       getNotifications();
    }, []);
 
-   const logoutHandler = () => {
+   const logoutHandler = (): void => {
       localStorage.setItem('user', JSON.stringify({ logged_in: false }));
       navigate(0);
    };
-   const userData = JSON.parse(localStorage.getItem('user'));
+   const userData = JSON.parse(localStorage.getItem('user')!);
    async function getNotifications() {
       try {
          const response = await axios.get(`/api/notifications?id=${userData.userData.id}`);
@@ -45,7 +55,7 @@ export default function Root() {
       setbellNotificationOpen(false);
    };
 
-   const searchData = (event) => {
+   const searchData = (event: React.ChangeEvent<HTMLInputElement>) => {
       if (event.target.value.length > 2) {
          axios
             .post('/api/products', {

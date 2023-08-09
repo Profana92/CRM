@@ -26,11 +26,8 @@ function Clients() {
       try {
          const markets = await axios.get(`/api/markets?marketName=${loggedInUser.userData.market}`);
          const clients = await axios.get(`/api/clients`);
-
          const result = markets.data.clients.map((element: number) => {
-            console.log('element', element);
             return clients.data.find((item: marketsDataInterface) => {
-               console.log('item', item);
                return element === +item.id;
             });
          });

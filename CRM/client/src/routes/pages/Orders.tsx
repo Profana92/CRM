@@ -4,10 +4,58 @@ import { setPageTitle } from 'features/currentPageTitleSlice';
 import axios from 'axios';
 import { RotatingLines } from 'react-loader-spinner';
 import OrdersTable from 'components/Tables/OrdersTable';
+
+interface ordersDataInterface {
+   associatedOrder: string;
+   dateOfCreation: string;
+   products: { name: string; amount: number }[];
+   status: string;
+   uniqueiD: string;
+}
+interface clientDataInterface {
+   id: number;
+   name: string;
+   location: {
+      city: string;
+      country: string;
+      postcode: number;
+      street: string;
+   };
+   email: string;
+   cell: string;
+   loginData: { password: string; username: string; uuid: string };
+   offers: string[];
+   orders: string[];
+   picture: { large: string; medium: string; thumbnail: string };
+   phone: string;
+}
+type ordersDataType = {
+   client: {
+      id: number;
+      name: string;
+      location: {
+         city: string;
+         country: string;
+         postcode: number;
+         street: string;
+      };
+      email: string;
+      cell: string;
+      loginData: { password: string; username: string; uuid: string };
+      offers: string[];
+      orders: string[];
+      picture: { large: string; medium: string; thumbnail: string };
+      phone: string;
+   };
+   number: string;
+   orderDetails: { associatedOffer: string; dateOfCreation: string; products: { name: string; amount: number }[]; status: string; uniqueiD: string };
+}[];
+
 function Orders() {
-   const [fetchedOrdersData, setfetchedOrdersData] = useState(null);
-   const [loggedInUser] = useState(JSON.parse(localStorage.getItem('user')));
-   /** Products download */
+   const [fetchedOrdersData, setfetchedOrdersData] = useState<ordersDataType | null>(null);
+   const [loggedInUser] = useState(JSON.parse(localStorage.getItem('user')!));
+   const dispatch = useDispatch();
+
    async function getOrders() {
       try {
          const markets = await axios.get(`/api/markets?marketName=${loggedInUser.userData.market}`);
@@ -17,7 +65,7 @@ function Orders() {
          //Get all users belonging to logged user market
          for (let element of markets.data.clients) {
             result.push(
-               clients.data.find((item) => {
+               clients.data.find((item: clientDataInterface) => {
                   return item.id === +element;
                }),
             );
@@ -29,7 +77,7 @@ function Orders() {
             .map((item) => {
                let ordersList = [];
                for (let number of item.orders) {
-                  const orderDetails = orders.data.find((item) => {
+                  const orderDetails = orders.data.find((item: ordersDataInterface) => {
                      return item.uniqueiD === number;
                   });
                   ordersList.push({ number, client: { ...item }, orderDetails });
@@ -43,7 +91,6 @@ function Orders() {
       }
    }
 
-   const dispatch = useDispatch();
    useEffect(() => {
       document.title = 'Orders';
       getOrders();

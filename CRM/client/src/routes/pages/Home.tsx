@@ -131,9 +131,9 @@ function Home() {
    if (fetchedTasksData) {
       calendarData = fetchedTasksData.data.map((item: fetchedTasksDataMapItemInterface) => {
          const startDateArray = item.calendarData.StartTime.split(', ');
-         const startDate = new Date(...startDateArray);
+         const startDate = new Date(...(startDateArray as []));
          const endDateArray = item.calendarData.EndTime.split(', ');
-         const endDate = new Date(...endDateArray);
+         const endDate = new Date(...(endDateArray as []));
          return { ...item.calendarData, StartTime: startDate, EndTime: new Date(endDate) };
       });
    }
