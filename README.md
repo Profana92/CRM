@@ -39,9 +39,9 @@ Colors:
 
 Sizes:
 
-Element | Type | Size
---- | --- | ---
-Header | fixed | 4rem
-Body | flexible | 1fr/100%
-Footer | fixed | 4rem
+| Element | Type | Size |
+| --- | --- | --- |
+| Header | fixed | 4rem |
+| Body | flexible | 1fr/100% |
+| Footer | fixed | 4rem |
 
