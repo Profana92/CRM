@@ -12,6 +12,7 @@ import Clients from 'routes/pages/Clients.tsx';
 import Institutions from 'routes/pages/Institutions.tsx';
 import Offers from 'routes/pages/Offers.tsx';
 import Orders from 'routes/pages/Orders.tsx';
+import Knowledge from 'routes/pages/Knowledge.tsx';
 import LoginForm from 'routes/pages/login/login.tsx';
 import PrivateRoute from 'routes/pages/login/privateRoute.tsx';
 import { registerLicense } from '@syncfusion/ej2-base';
@@ -80,7 +81,7 @@ const router = createBrowserRouter([
             path: 'knowledge_base',
             element: (
                <PrivateRoute>
-                  <Products />
+                  <Knowledge />
                </PrivateRoute>
             ),
          },
