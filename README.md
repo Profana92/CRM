@@ -26,8 +26,8 @@ Resources:
 Styles:
 
 Fonts:
-** Headings: Montserrat,
-** Body: Lato
+** Headings: [Montserrat](https://fonts.google.com/specimen/Montserrat),
+** Body: [Lato](https://fonts.google.com/specimen/Lato)
 
 Colors:
 
@@ -38,6 +38,10 @@ Colors:
 #1A1921
 
 Sizes:
-Header height: 4rem
-Body size: adaptive - 1fr left.
-Footer height: 4rem
+
+Element | Type | Size
+--- | --- | ---
+Header | fixed | 4rem
+Body | flexible | 1fr/100%
+Footer | fixed | 4rem
+
