@@ -20,8 +20,9 @@ The project should have:
 
 Resources:
 
-- Figma: https://www.figma.com/file/VUOE6SdlOxugWH2sYAZFr1/CRM
+- [Figma](https://www.figma.com/file/VUOE6SdlOxugWH2sYAZFr1/CRM)
 - [FigJam](https://www.figma.com/file/ylE0e1kV5JEFncD9v7QnGZ/CRM?type=whiteboard&t=P4IYDDOEesQXn8wb-6)
+
 Styles:
 
 Fonts:
