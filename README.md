@@ -12,20 +12,16 @@ Technologies:
 * Typescript
 * Tailwind CSS
 
-Project should have:
+The project should have:
 
-- Clock -
-- Dynamic Title
-- Products - Fake Store API
-- Companies - Express.js
-- Individual clients - Express.js
-- Option to make, generate and print sales offers - Redux
-- Option to make, generate and print sales orders - Redux
+- Clock - digital clock VanillaJS
+- Dynamic Title - Redux
+- Data - Express.js
 
 Resources:
 
-- Figma : https://www.figma.com/file/VUOE6SdlOxugWH2sYAZFr1/CRM
-
+- Figma: https://www.figma.com/file/VUOE6SdlOxugWH2sYAZFr1/CRM
+- [FigJam](https://www.figma.com/file/ylE0e1kV5JEFncD9v7QnGZ/CRM?type=whiteboard&t=P4IYDDOEesQXn8wb-6)
 Styles:
 
 Fonts:
@@ -41,4 +37,6 @@ Colors:
 #1A1921
 
 Sizes:
-Header height:4rem
+Header height: 4rem
+Body size: adaptive - 1fr left.
+Footer height: 4rem
