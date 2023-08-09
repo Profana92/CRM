@@ -4,13 +4,13 @@ This is a simple CRM project
 
 Technologies:
 
-- Express
-- React
-- Router
-- Redux
-
-* Typescript
-* Tailwind CSS
+- [React](https://react.dev/)
+- [ReactRouter](https://reactrouter.com/en/main)
+- [Redux Toolkit](https://redux-toolkit.js.org/)
+- [Express](https://expressjs.com/en/starter/installing.html)
+* [Typescript](https://www.typescriptlang.org/)
+* [Tailwind CSS](https://tailwindcss.com/)
+* [Vite](https://vitejs.dev/)
 
 The project should have:
 
