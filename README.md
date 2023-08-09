@@ -1,5 +1,11 @@
 # CRM
 
+To run:
+1. Clone repo.
+2. cd crm && npm install && cd client && npm install <---install dependencies
+3. cd crm && npm start  <---starts Express Server
+4. new terminal window and type command: cd crm/client && npm run dev <---starts Vite Server
+
 This is a simple CRM project
 
 Technologies:
