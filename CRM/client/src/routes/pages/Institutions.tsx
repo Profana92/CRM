@@ -4,18 +4,29 @@ import { setPageTitle } from 'features/currentPageTitleSlice';
 import axios from 'axios';
 import { RotatingLines } from 'react-loader-spinner';
 import InstitutionsTable from 'components/Tables/InstitutionsTable';
+interface institutionsInterface {
+   clients: number[];
+   id: number;
+   location: { street: string; city: string; country: string; postcode: number };
+   name: string;
+   phone: string;
+}
+
 function Institutions() {
    const [fetchedUsers, setfetchedUsers] = useState(null);
-   const [loggedInUser] = useState(JSON.parse(localStorage.getItem('user')));
-   /** Products download */
+   const [loggedInUser] = useState(JSON.parse(localStorage.getItem('user')!));
+   const dispatch = useDispatch();
+   useEffect(() => {
+      document.title = 'Institutions';
+      getInstitutions();
+      dispatch(setPageTitle('Institutions'));
+   }, []);
    async function getInstitutions() {
       try {
          const markets = await axios.get(`/api/markets?marketName=${loggedInUser.userData.market}`);
          const institutions = await axios.get(`/api/institutions`);
-         console.log('markets', markets.data);
-         console.log('institutions', institutions.data);
-         const result = markets.data.institutions.map((element) => {
-            return institutions.data.find((item) => {
+         const result = markets.data.institutions.map((element: number) => {
+            return institutions.data.find((item: institutionsInterface) => {
                return element === +item.id;
             });
          });
@@ -24,13 +35,6 @@ function Institutions() {
          console.error(error);
       }
    }
-
-   const dispatch = useDispatch();
-   useEffect(() => {
-      document.title = 'Institutions';
-      getInstitutions();
-      dispatch(setPageTitle('Institutions'));
-   }, []);
 
    return (
       <div className="w-full ">
