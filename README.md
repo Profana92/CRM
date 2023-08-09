@@ -11,7 +11,7 @@ Technologies:
 * [Typescript](https://www.typescriptlang.org/)
 * [Tailwind CSS](https://tailwindcss.com/)
 * [Vite](https://vitejs.dev/)
-
+* [EJ2 UI library](https://ej2.syncfusion.com/home/react.html#platform)
 The project should have:
 
 - Clock - digital clock VanillaJS
