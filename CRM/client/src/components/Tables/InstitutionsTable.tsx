@@ -1,11 +1,28 @@
 import { ColumnDirective, ColumnsDirective, Filter, GridComponent, Group, Inject, Page, Sort, Resize, Toolbar, PdfExport } from '@syncfusion/ej2-react-grids';
+export interface Props {
+   items: Item[];
+}
 
-function InstitutionsTable(props) {
- 
-   let grid;
+export interface Item {
+   id: number;
+   name: string;
+   location: Location;
+   phone: string;
+   clients: number[];
+}
+
+export interface Location {
+   street: string;
+   city: string;
+   country: string;
+   postcode: number;
+}
+
+function InstitutionsTable(props: Props) {
+   let grid: any;
    const pageSettings = { pageSize: 10, pageSizes: true };
    const toolbarOptions = ['Search', 'Print', 'PdfExport'];
-   const toolbarClick = (args) => {
+   const toolbarClick = (args: any) => {
       if (grid && args.item.id === 'grid_pdfexport') {
          grid.pdfExport();
       }
