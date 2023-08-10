@@ -1,4 +1,43 @@
-function SidebarsRight(props) {
+interface AxiosResponseInterface {
+   config: Object;
+   data: [];
+   headers: Object;
+   status: number;
+   statusText: string;
+}
+interface Props {
+   bellNotificationOpen: boolean;
+   bellNotificationData: AxiosResponseInterface | null;
+   searchOpen: boolean;
+   dotsOpen: boolean;
+   searchResult: Array<any>;
+   searchData: (event: React.ChangeEvent<HTMLInputElement>) => void;
+   logoutHandler: () => void;
+   userData: {
+      userData: {
+         id: number;
+         username: string;
+         firstname: string;
+         lastName: string;
+         position: string;
+         picture: string;
+         market: string;
+      };
+      logged_in: boolean;
+   };
+}
+
+interface BellNotificationDataItemInterface {
+   id: number;
+   userId: number;
+   title: string;
+   dateOfCreation: number[];
+   priority: string;
+   clientId: number;
+   createdBy: number;
+}
+
+function SidebarsRight(props: Props) {
    return (
       <div className="text-slate-800">
          <div
@@ -8,7 +47,7 @@ function SidebarsRight(props) {
          >
             <div className="w-full">
                {props.bellNotificationData
-                  ? props.bellNotificationData.data.map((item) => {
+                  ? props.bellNotificationData.data.map((item: BellNotificationDataItemInterface) => {
                        return (
                           <p key={item.id} className="border p-2 mb-2 shadow-sm hover:scale-105 hover:bg-slate-50 transition-all ">
                              {item.title}

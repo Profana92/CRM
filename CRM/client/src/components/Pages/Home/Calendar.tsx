@@ -1,8 +1,20 @@
 import { ScheduleComponent, Day, Week, WorkWeek, Month, Agenda, Inject } from '@syncfusion/ej2-react-schedule';
 
-function Calendar(props) {
-   // console.log(props);
+export interface CalendarPropsInterface {
+   items: Item[];
+}
 
+export interface Item {
+   Id: number;
+   Subject: string;
+   StartTime: Date;
+   EndTime: Date;
+   IsAllDay: boolean;
+   Status: string;
+   Priority: string;
+}
+
+function Calendar(props: CalendarPropsInterface) {
    const data: object[] = props.items || [];
    const fieldsData = {
       id: 'Id',

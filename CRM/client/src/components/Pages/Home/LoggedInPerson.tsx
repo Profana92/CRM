@@ -1,4 +1,23 @@
-function LoggedInPerson(props) {
+export interface LoggedInInterfqace {
+   data: Data;
+}
+
+export interface Data {
+   userData: UserData;
+   logged_in: boolean;
+}
+
+export interface UserData {
+   id: number;
+   username: string;
+   firstname: string;
+   lastName: string;
+   position: string;
+   picture: string;
+   market: string;
+}
+
+function LoggedInPerson(props: LoggedInInterfqace) {
    return (
       <>
          <div className="min-w-[19rem] xl:ml-4 flex flex-row justify-center xl:flex-col p-5 border gap-5 sm:gap-10 xl:gap-24 shadow-lg">
