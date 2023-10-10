@@ -2,7 +2,7 @@ const express = require("express");
 const MiniSearch = require("minisearch");
 const app = express();
 
-const port = 3000;
+const port = 3005;
 const fs = require("fs");
 const marketsData = Object.values(JSON.parse(fs.readFileSync("./server/data/marketsData.json")));
 const tasksData = Object.values(JSON.parse(fs.readFileSync("./server/data/usersTasks.json")));
