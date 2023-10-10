@@ -16,7 +16,7 @@ import Knowledge from 'routes/pages/Knowledge.tsx';
 import LoginForm from 'routes/pages/login/login.tsx';
 import PrivateRoute from 'routes/pages/login/privateRoute.tsx';
 import { registerLicense } from '@syncfusion/ej2-base';
-registerLicense('Ngo9BigBOggjHTQxAR8/V1NGaF5cXmdCdkx0QHxbf1xzZFdMZFxbRXVPMyBoS35RdUVkW3lecnBVR2RdUEV3');
+registerLicense('Ngo9BigBOggjHTQxAR8/V1NGaF1cXGFCf1FpRmJGdld5fUVHYVZUTXxaS00DNHVRdkdgWH9fcHRdRGRZVEZ2XUI=');
 
 const router = createBrowserRouter([
    {
